@@ -15,7 +15,7 @@ import javax.persistence.Table;
 
 import org.hibernate.criterion.Order;
 
-import com.emp.model.Emp;
+//import com.emp.model.Emp;
 
 @Entity
 @Table(name = "Rtn")
@@ -37,13 +37,13 @@ public class Rtn {
 	@Column(name = "rtnStatus")
 	private int rtnStatus;
 	// FK員工
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "empNo", referencedColumnName = "empNo")
-	private Emp empNo;
+//	@ManyToOne(fetch = FetchType.LAZY)
+//	@JoinColumn(name = "empNo", referencedColumnName = "empNo")
+//	private Emp empNo;
 	// FK訂單
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "orderNo", referencedColumnName = "ordNo")
-	private Order orderNo;
+//	@ManyToOne(fetch = FetchType.LAZY)
+//	@JoinColumn(name = "orderNo", referencedColumnName = "ordNo")
+//	private Order orderNo;
 
 	public Integer getRtnNo() {
 		return rtnNo;
@@ -85,20 +85,20 @@ public class Rtn {
 		this.rtnStatus = rtnStatus;
 	}
 
-	public Emp getEmpNo() {
-		return empNo;
-	}
-
-	public void setEmpNo(Emp empNo) {
-		this.empNo = empNo;
-	}
-
-	public Order getOrderNo() {
-		return orderNo;
-	}
-
-	public void setOrderNo(Order orderNo) {
-		this.orderNo = orderNo;
-	}
+//	public Emp getEmpNo() {
+//		return empNo;
+//	}
+//
+//	public void setEmpNo(Emp empNo) {
+//		this.empNo = empNo;
+//	}
+//
+//	public Order getOrderNo() {
+//		return orderNo;
+//	}
+//
+//	public void setOrderNo(Order orderNo) {
+//		this.orderNo = orderNo;
+//	}
 
 }

@@ -1,6 +1,6 @@
-package com.dodo.good_luck.service;
+package com.product.service;
 
-import com.dodo.good_luck.model.Product;
+import com.product.model.Product;
 
 public interface ProductService {
 

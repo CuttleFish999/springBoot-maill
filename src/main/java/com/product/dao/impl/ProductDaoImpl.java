@@ -1,8 +1,8 @@
-package com.dodo.good_luck.dao.impl;
+package com.product.dao.impl;
 
-import com.dodo.good_luck.dao.ProductDao;
-import com.dodo.good_luck.model.Product;
-import com.dodo.good_luck.rowmapper.ProductRowMapper;
+import com.product.dao.ProductDao;
+import com.product.model.Product;
+import com.product.rowmapper.ProductRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;

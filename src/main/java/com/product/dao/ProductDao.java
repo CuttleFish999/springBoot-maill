@@ -1,6 +1,6 @@
-package com.dodo.good_luck.dao;
+package com.product.dao;
 
-import com.dodo.good_luck.model.Product;
+import com.product.model.Product;
 
 public interface ProductDao {
 

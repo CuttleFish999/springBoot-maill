@@ -1,9 +1,9 @@
-package com.dodo.good_luck.service.impl;
+package com.product.service.impl;
 
 
-import com.dodo.good_luck.dao.ProductDao;
-import com.dodo.good_luck.model.Product;
-import com.dodo.good_luck.service.ProductService;
+import com.product.dao.ProductDao;
+import com.product.model.Product;
+import com.product.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

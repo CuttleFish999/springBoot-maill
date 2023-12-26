@@ -1,4 +1,4 @@
-package com.dodo.good_luck.model;
+package com.product.model;
 
 import java.util.Date;
 

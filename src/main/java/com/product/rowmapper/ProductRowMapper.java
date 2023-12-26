@@ -1,6 +1,6 @@
-package com.dodo.good_luck.rowmapper;
+package com.product.rowmapper;
 
-import com.dodo.good_luck.model.Product;
+import com.product.model.Product;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

@@ -1,7 +1,7 @@
-package com.dodo.good_luck.controller;
+package com.product.controller;
 
-import com.dodo.good_luck.model.Product;
-import com.dodo.good_luck.service.ProductService;
+import com.product.model.Product;
+import com.product.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

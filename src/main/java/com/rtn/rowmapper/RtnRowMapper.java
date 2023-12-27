@@ -1,11 +1,12 @@
 package com.rtn.rowmapper;
 
-import com.rtn.model.Rtn;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import com.emp.model.Emp;
+import com.rtn.model.Rtn;
 
 public class RtnRowMapper implements RowMapper<Rtn> {
     @Override
@@ -13,6 +14,12 @@ public class RtnRowMapper implements RowMapper<Rtn> {
     	
     	Rtn rtn = new Rtn();      
         rtn.setRtnNo(resultSet.getInt("rtnNo"));
+        
+        Emp emp = new Emp(); 
+        emp.setEmpNo(resultSet.getInt("empNo"));
+        rtn.setEmpNo(emp); 
+        
+        
 //        rtn.setEmpNo(resultSet.getInt("empNo"));
 //        rtn.setOrdNo(resultSet.getInt("ordNo"));
         rtn.setRtnDate(resultSet.getDate("rtnDate"));

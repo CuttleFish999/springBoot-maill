@@ -23,13 +23,15 @@ public class RtnDaoImpl implements RtnDao {
 	public Rtn getRtnNoById(Integer rtnNo) {
 //		String sql = "SELECT rtnNo, empNo, ordNo, rtnDate, rtnWhy, refundAmount, rtnStatus "
 //				+ "FROM rtn WHERE rtnNo =:rtnNo";
-		String sqlTest = "SELECT rtnNo, rtnDate, rtnWhy, refundAmount, rtnStatus "
+//		String sqlTest = "SELECT rtnNo, rtnDate, rtnWhy, refundAmount, rtnStatus "
+//				+ "FROM rtn WHERE rtnNo =:rtnNo";
+		String sqlTestEmp = "SELECT rtnNo, empNo, rtnDate, rtnWhy, refundAmount, rtnStatus "
 				+ "FROM rtn WHERE rtnNo =:rtnNo";
 		
 		Map<String , Object> map = new HashMap<>();
 		map.put("rtnNo", rtnNo);
 		
-		List<Rtn> RtnList = namedParameterJdbcTemplate.query(sqlTest,map,new RtnRowMapper());
+		List<Rtn> RtnList = namedParameterJdbcTemplate.query(sqlTestEmp,map,new RtnRowMapper());
 		
 		if(RtnList.size() > 0) {
 			return RtnList.get(0);

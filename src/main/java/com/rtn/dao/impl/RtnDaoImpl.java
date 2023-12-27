@@ -15,9 +15,8 @@ import com.rtn.rowmapper.RtnRowMapper;
 @Component
 public class RtnDaoImpl implements RtnDao {
 
-    @Autowired
-    private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-
+	@Autowired
+	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
 	@Override
 	public Rtn getRtnNoById(Integer rtnNo) {
@@ -25,19 +24,39 @@ public class RtnDaoImpl implements RtnDao {
 //				+ "FROM rtn WHERE rtnNo =:rtnNo";
 //		String sqlTest = "SELECT rtnNo, rtnDate, rtnWhy, refundAmount, rtnStatus "
 //				+ "FROM rtn WHERE rtnNo =:rtnNo";
-		String sqlTestEmp = "SELECT rtnNo, empNo, rtnDate, rtnWhy, refundAmount, rtnStatus "
-				+ "FROM rtn WHERE rtnNo =:rtnNo";
+//		String sqlTestEmp = "SELECT rtnNo, empNo, rtnDate, rtnWhy, refundAmount, rtnStatus "
+//				+ "FROM rtn WHERE rtnNo =:rtnNo";
 		
-		Map<String , Object> map = new HashMap<>();
+		String sqlTestEmp = "SELECT "
+				+ "    r.rtnNo, "
+				+ "    r.rtnDate, "
+				+ "    r.rtnWhy, "
+				+ "    r.refundAmount, "
+				+ "    r.rtnStatus, "
+				+ "    e.empNo, "
+				+ "    e.empName, "
+				+ "    e.empPsw, "
+				+ "    e.empHireDate, "
+				+ "    e.empStatus, "
+				+ "    e.empSal "
+				+ "FROM "
+				+ "    rtn r "
+				+ "JOIN "
+				+ "    emp e "
+				+ "ON "
+				+ "    r.empNo = e.empNo "
+				+ "WHERE "
+				+ "    r.rtnNo =:rtnNo; ";
+
+		Map<String, Object> map = new HashMap<>();
 		map.put("rtnNo", rtnNo);
-		
-		List<Rtn> RtnList = namedParameterJdbcTemplate.query(sqlTestEmp,map,new RtnRowMapper());
-		
-		if(RtnList.size() > 0) {
+		List<Rtn> RtnList = namedParameterJdbcTemplate.query(sqlTestEmp, map, new RtnRowMapper());
+
+		if (RtnList.size() > 0) {
 			return RtnList.get(0);
-		}else {
+		} else {
 			return null;
 		}
-		
+
 	}
 }

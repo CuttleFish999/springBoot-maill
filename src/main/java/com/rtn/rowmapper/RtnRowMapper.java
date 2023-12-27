@@ -17,6 +17,12 @@ public class RtnRowMapper implements RowMapper<Rtn> {
         
         Emp emp = new Emp(); 
         emp.setEmpNo(resultSet.getInt("empNo"));
+        emp.setEmpName(resultSet.getString("empName"));
+        emp.setEmpPsw(resultSet.getString("empPsw"));
+        emp.setEmpHireDate(resultSet.getDate("empHireDate"));
+        emp.setEmpStatus(resultSet.getByte("empStatus"));
+        emp.setEmpSal(resultSet.getInt("empSal"));
+        
         rtn.setEmpNo(emp); 
         
         

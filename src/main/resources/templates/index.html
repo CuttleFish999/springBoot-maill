@@ -3,12 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        .inline {
+            display: inline-block;
+            margin-right: 10px; /* Adjust the margin as needed */
+        }
+    </style>
 </head>
 <body>
 
 <h1>My Home</h1>
 
-<!-- <p th:text="${myStudent.id}"></p> -->
+<span class="inline">退貨單編號:</span><p class="inline" th:text="${rtn.RtnNo}"></p>
+
 <!-- <p th:text="${myStudent.name}"></p> -->
 
 <a href="/hello">Go to hello page</a></br>
@@ -20,7 +27,6 @@
     密碼：<input type='text' name='userPassword'>
     <input type='submit' value='登入'>
 </form>
-
 
 </body>
 </html>

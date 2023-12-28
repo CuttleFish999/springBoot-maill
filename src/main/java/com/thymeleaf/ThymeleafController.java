@@ -12,15 +12,13 @@ public class ThymeleafController {
 
     @GetMapping("/home")
     public String home(Model model) {
-//        Student student = new Student();
-//        student.setId(1);
-//        student.setName("Judy");
+
         
-//        Rtn rtn = new Rtn();
-//        rtn.setRtnNo(1);
-//        rtn.set
+        Rtn rtn = new Rtn();
+        rtn.setRtnNo(1);
+        rtn.setRtnWhy("123");
         
-//        model.addAttribute("myStudent", student);
+        model.addAttribute("rtn", rtn);
 
         return "index";
     }

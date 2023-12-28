@@ -1,14 +1,19 @@
 package com.rtn.dao.impl;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
 
 import com.rtn.dao.RtnDao;
+import com.rtn.dto.RtnRequest;
 import com.rtn.model.Rtn;
 import com.rtn.rowmapper.RtnRowMapper;
 
@@ -38,4 +43,30 @@ public class RtnDaoImpl implements RtnDao {
 		}
 		
 	}
+
+	@Override
+	public Integer createRtn(RtnRequest rtnRequest) {
+		String sql = "INSERT INTO RTN (  rtnWhy , refundAmount , rtnStatus , rtnDate)" +
+					"VALUE( :rtnWhy , :refundAmount , :rtnStatus , :rtnDate )";
+		Map<String , Object> map = new HashMap<>();
+		
+		map.put("rtnWhy", rtnRequest.getRtnWhy());
+		map.put("refundAmount", rtnRequest.getRefundAmount());
+		map.put("rtnStatus", rtnRequest.getRtnStatus());
+		
+		Date now = new Date();
+		map.put("rtnDate", now);
+		
+		KeyHolder keyHolder = new GeneratedKeyHolder();
+		
+		namedParameterJdbcTemplate.update(sql, new MapSqlParameterSource(map),keyHolder);
+		
+		
+		int RtnNoId = keyHolder.getKey().intValue();
+		
+		
+		return RtnNoId;
+	}
+	
+	
 }

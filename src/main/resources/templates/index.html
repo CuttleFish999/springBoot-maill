@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>My Home</h1>
+
+<p th:text="${myStudent.id}"></p>
+<p th:text="${myStudent.name}"></p>
+
+<a href="/hello">Go to hello page</a></br>
+
+<img th:src="@{/images/dog.png}"/>
+
+<form method='post' action='/login'>
+    帳號：<input type='text' name='userName'><br/>
+    密碼：<input type='text' name='userPassword'>
+    <input type='submit' value='登入'>
+</form>
+
+
+</body>
+</html>

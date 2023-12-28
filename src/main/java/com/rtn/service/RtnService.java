@@ -8,4 +8,6 @@ public interface RtnService {
     Rtn getProductById(Integer productId);
     
     Integer createRtn(RtnRequest rtnRequeset);
+    
+    void updateRtn(Integer RtnNoId , RtnRequest rtnRequeset);
 }

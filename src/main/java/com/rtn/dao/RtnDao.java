@@ -8,5 +8,7 @@ public interface RtnDao {
 	Rtn getRtnNoById(Integer rtnNo);
 	
 	Integer createRtn(RtnRequest rtnRequest);
+	
+	void updateRtn(Integer RtnNoId , RtnRequest rtnRequest);
     
 }

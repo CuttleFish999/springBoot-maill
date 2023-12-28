@@ -67,6 +67,25 @@ public class RtnDaoImpl implements RtnDao {
 		
 		return RtnNoId;
 	}
+
+	@Override
+	public void updateRtn(Integer RtnNoId, RtnRequest rtnRequest) {
+		String sql = "UPDATE rtn SET  rtnWhy = :rtnWhy , refundAmount = :refundAmount ,  rtnStatus = :rtnStatus ,rtnDate = :rtnDate "  +
+		"WHERE rtnNo = :RtnNoId";
+		
+		Map<String , Object> map = new HashMap<>();
+		map.put("RtnNoId", RtnNoId);
+		
+		map.put("rtnWhy", rtnRequest.getRtnWhy());
+		map.put("refundAmount", rtnRequest.getRefundAmount());
+		map.put("rtnStatus", rtnRequest.getRtnStatus());
+		
+		map.put("rtnDate", rtnRequest.getRtnDate());
+		
+		namedParameterJdbcTemplate.update(sql, map);
+	}
+	
+	
 	
 	
 }

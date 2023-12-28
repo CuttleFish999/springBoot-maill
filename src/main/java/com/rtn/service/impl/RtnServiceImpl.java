@@ -23,4 +23,8 @@ public class RtnServiceImpl implements RtnService {
 		return rtnDao.createRtn(rtnRequeset);
 		
 	}
+	@Override
+	public void updateRtn(Integer RtnNoId, RtnRequest rtnRequeset) {
+		rtnDao.updateRtn(RtnNoId, rtnRequeset);
+	}
 }

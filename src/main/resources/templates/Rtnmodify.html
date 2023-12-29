@@ -51,14 +51,26 @@ main {
 	margin-top: 10px;
 	font-size: 2em;
 }
-
+.modify-btn-c,
 .modify-btn {
-	border: 1px solid #000;
+/* 	border: 1px solid #000; */
 	border-radius: 5px;
+	margin: 0 5px;
+    width: 50px;
+}
+.modify-btn:hover,
+.modify-btn-c:hover{
+
+	color:white;
 }
 
 .modify-btn:hover {
 	background: yellowGreen;
+}
+
+.modify-btn-c:hover {
+
+	background: #e76969;
 }
 </style>
 
@@ -117,7 +129,7 @@ main {
 					<th>退貨原因</th>
 					<th>退款金額</th>
 					<th>退貨狀態</th>
-					<th>修改狀態</th>
+					<th>功能</th>
 					<!-- Add more headers as needed -->
 				</tr>
 			</thead>
@@ -134,6 +146,9 @@ main {
 						<button
 							onclick="redirectToModifyPage(this.getAttribute('data-rtnNo'))"
 							data-rtnNo="${rtn.rtnNo}" class="modify-btn">存檔</button>
+						<button
+							onclick="cancelAndRollBack()"
+							data-rtnNo="${rtn.rtnNo}" class="modify-btn-c">取消</button>
 					</td>
 
 				</tr>
@@ -151,6 +166,10 @@ main {
 			// If it's in a different directory, adjust the path accordingly.
 // 			window.location.href = 'modify.html?rtnNo=' + rtnNo;
 			window.location.href = 'Rtnmodify?rtnNo=' + rtnNo;
+		}
+		
+		function cancelAndRollBack(){
+			window.location.href = '/Rtn';
 		}
 	</script>
 

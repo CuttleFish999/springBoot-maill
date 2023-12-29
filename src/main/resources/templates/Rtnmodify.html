@@ -142,39 +142,86 @@ main {
 			</thead>
 			<tbody>
 				<tr th:each="rtn : ${rtnPuting}">
-					<td><input class="input-text" th:value="${rtn.empNo.empNo}"></td>
-					<td><input class="input-text" th:value="${rtn.rtnNo}"></td>
-					<td><input class="input-text" th:value="${rtn.rtnDate}"></td>
-					<td><input class="input-text" th:value="${rtn.rtnWhy}"></td>
-					<td><input class="input-text" th:value="${rtn.refundAmount}"></td>
-					<td><input class="input-text" th:value="${rtn.rtnStatus}"></td>
+					<td><input id="" class="input-text" th:value="${rtn.empNo.empNo}"></td>
+					<td><input id="rtnNoInput" class="input-text" th:value="${rtn.rtnNo}"></td>
+					<td><input id="rtnDateInput" class="input-text" th:value="${rtn.rtnDate}"></td>
+					<td><input id="rtnWhyInput" class="input-text" th:value="${rtn.rtnWhy}"></td>
+					<td><input id="refundAmountInput" class="input-text" th:value="${rtn.refundAmount}"></td>
+					<td><input id="rtnStatusInput" class="input-text" th:value="${rtn.rtnStatus}"></td>
 
 					<td>
+						<!-- 						<button class="modify-btn" th:attr="data-rtnNo=${rtn.rtnNo}" -->
+						<!-- 							onclick="redirectToModifyPageAndReturn(this.getAttribute('data-rtnNo'))">存檔</button> -->
 						<button class="modify-btn" th:attr="data-rtnNo=${rtn.rtnNo}"
-							onclick="redirectToModifyPageAndReturn(this.getAttribute('data-rtnNo'))">存檔</button>
+							onclick="updateRtnOnServer(this.getAttribute('data-rtnNo'))">存檔</button>
 						<button onclick="cancelAndRollBack()" data-rtnNo="${rtn.rtnNo}"
 							class="modify-btn-c">取消</button>
 					</td>
 				</tr>
 			</tbody>
-	</main>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+			</main>
+			<script
+				src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
-	<script>
-		function redirectToModifyPage(rtnNo) {
-			console.log(rtnNo);
-			// Assuming modify.html is in the same directory as the current page.
-			// If it's in a different directory, adjust the path accordingly.
-			// 			window.location.href = 'modify.html?rtnNo=' + rtnNo;
-			window.location.href = 'Rtnmodify?rtnNo=' + rtnNo;
-		}
+			<script>
+				function redirectToModifyPage(rtnNo) {
+					console.log(rtnNo);
+					// Assuming modify.html is in the same directory as the current page.
+					// If it's in a different directory, adjust the path accordingly.
+					// 			window.location.href = 'modify.html?rtnNo=' + rtnNo;
+					window.location.href = 'Rtnmodify?rtnNo=' + rtnNo;
+				}
 
-		function cancelAndRollBack() {
-			window.location.href = '/Rtn';
-		}
-	</script>
+				function cancelAndRollBack() {
+					window.location.href = '/Rtn';
+				}
+				
+				function updateRtnOnServer() {
+				    // 不再需要从参数中获取 rtnNo
+				    const rtnNo = document.querySelector('#rtnNoInput').value;
+				    const rtnDate = document.querySelector('#rtnDateInput').value;
+				    const rtnWhy = document.querySelector('#rtnWhyInput').value;
+				    const refundAmount = document.querySelector('#refundAmountInput').value;
+				    const rtnStatus = document.querySelector('#rtnStatusInput').value;
 
+				    // 构建请求数据
+				    const rtnRequestData = {
+				        // 不再包含 empNo
+				        rtnNo: rtnNo,
+				        rtnDate: rtnDate,
+				        rtnWhy: rtnWhy,
+				        refundAmount: refundAmount,
+				        rtnStatus: rtnStatus
+				        // 添加其他字段，根据需要
+				    };
+
+				    // 发送PUT请求
+				    fetch('/Rtnmodify/' + rtnNo, {
+				        method: 'PUT',
+				        headers: {
+				            'Content-Type': 'application/json',
+				        },
+				        body: JSON.stringify(rtnRequestData),
+				    })
+				    .then(response => {
+				        if (!response.ok) {
+				            throw new Error('网络响应不正常：' + response.status + ' ' + response.statusText);
+				        }
+				        return response.json();
+				    })
+				    .then(updatedRtn => {
+				        console.log('成功更新Rtn：', updatedRtn);
+				        // 可选择重定向到另一个页面或执行其他操作
+				    })
+				    .catch(error => {
+				        console.error('更新Rtn时出错：', error.message);
+				        // 检查控制台以获取有关错误的更多详细信息
+				    });
+				}
+
+
+
+			</script>
 </body>
 
 </html>

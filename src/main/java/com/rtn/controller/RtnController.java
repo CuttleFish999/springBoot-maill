@@ -50,13 +50,14 @@ public class RtnController {
     										 @RequestBody @Valid RtnRequest rtnRequeset){
 //    	判斷數據是否存在
     	Rtn rtn = rtnService.getProductById(RtnNoId);
-//    	System.out.println(rtn);
+    	System.out.println(rtn == null);
     	if(rtn == null) {
     		return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     	}else {
 //    		修改數據
     		rtnService.updateRtn(RtnNoId, rtnRequeset);
     		Rtn updatedRtn = rtnService.getProductById(RtnNoId);
+    		System.out.println(RtnNoId);
     		return ResponseEntity.status(HttpStatus.OK).body(updatedRtn);
     	}
     	

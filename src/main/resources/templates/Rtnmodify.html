@@ -71,13 +71,19 @@ main {
 	background: #e76969;
 }
 
-.input-text {
+.input-text-FK, .input-text {
 	width: 100px;
 	text-align: center;
 }
 
 .input-text:focus {
 	color: red;
+}
+
+.input-text-FK {
+	pointer-events: none;
+	user-select: none;
+	color:gray;
 }
 </style>
 
@@ -142,12 +148,19 @@ main {
 			</thead>
 			<tbody>
 				<tr th:each="rtn : ${rtnPuting}">
-					<td><input id="" class="input-text" th:value="${rtn.empNo.empNo}"></td>
-					<td><input id="rtnNoInput" class="input-text" th:value="${rtn.rtnNo}"></td>
-					<td><input id="rtnDateInput" class="input-text" th:value="${rtn.rtnDate}"></td>
-					<td><input id="rtnWhyInput" class="input-text" th:value="${rtn.rtnWhy}"></td>
-					<td><input id="refundAmountInput" class="input-text" th:value="${rtn.refundAmount}"></td>
-					<td><input id="rtnStatusInput" class="input-text" th:value="${rtn.rtnStatus}"></td>
+					<td><input id="" class="input-text-FK"
+						th:value="${rtn.empNo.empNo}"></td>
+					<td><input id="rtnNoInput" class="input-text-FK"
+						th:value="${rtn.rtnNo}"></td>
+
+					<td><input id="rtnDateInput" class="input-text"
+						th:value="${rtn.rtnDate}"></td>
+					<td><input id="rtnWhyInput" class="input-text"
+						th:value="${rtn.rtnWhy}"></td>
+					<td><input id="refundAmountInput" class="input-text"
+						th:value="${rtn.refundAmount}"></td>
+					<td><input id="rtnStatusInput" class="input-text"
+						th:value="${rtn.rtnStatus}"></td>
 
 					<td>
 						<!-- 						<button class="modify-btn" th:attr="data-rtnNo=${rtn.rtnNo}" -->
@@ -217,7 +230,7 @@ main {
 				    })
 				    .catch(error => {
 				        console.error('更新Rtn有問題：', error.message);
-				        alert("更新Rtn有問題");
+				        alert("更新Rtn有問題，輸入異常");
 				    });
 				}
 

@@ -1,25 +1,29 @@
 package com.thymeleaf;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.rtn.model.Rtn;
+import com.rtn.service.RtnService;
 
 @Controller
+@ComponentScan(basePackages = "com.rtn")
 public class ThymeleafController {
-
-    @GetMapping("/home")
+	@Autowired
+	public RtnService rtnService;
+	
+    @GetMapping("/")
     public String home(Model model) {
 
+    	Integer rtnCount = rtnService.getAllRtnIdCount();
+        Rtn rtn = rtnService.getProductById(1);
         
-        Rtn rtn = new Rtn();
-        rtn.setRtnNo(1);
-        rtn.setRtnWhy("123");
-        
-        model.addAttribute("rtn", rtn);
-
+        model.addAttribute("rtnCount", rtnCount);
+        model.addAttribute("rtn1",rtn);
         return "index";
     }
 

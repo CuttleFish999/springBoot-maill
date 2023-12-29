@@ -10,4 +10,6 @@ public interface RtnService {
     Integer createRtn(RtnRequest rtnRequeset);
     
     void updateRtn(Integer RtnNoId , RtnRequest rtnRequeset);
+    
+    Integer getAllRtnIdCount();
 }

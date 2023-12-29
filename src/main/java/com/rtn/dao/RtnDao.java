@@ -11,4 +11,5 @@ public interface RtnDao {
 	
 	void updateRtn(Integer RtnNoId , RtnRequest rtnRequest);
     
+	Integer getAllRtnIdCount();
 }

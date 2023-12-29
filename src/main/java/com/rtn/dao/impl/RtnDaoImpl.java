@@ -84,6 +84,12 @@ public class RtnDaoImpl implements RtnDao {
 		
 		namedParameterJdbcTemplate.update(sql, map);
 	}
+
+	@Override
+	public Integer getAllRtnIdCount() {
+		String sql = "SELECT COUNT(*) FROM RTN;";
+		return namedParameterJdbcTemplate.queryForObject(sql, new MapSqlParameterSource(), Integer.class);
+	}
 	
 	
 	

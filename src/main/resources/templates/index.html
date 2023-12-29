@@ -1,32 +1,73 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <style>
-        .inline {
-            display: inline-block;
-            margin-right: 10px; /* Adjust the margin as needed */
-        }
-    </style>
+<meta charset="UTF-8">
+<title>Title</title>
+<style>
+body {
+	font-family: Arial, sans-serif;
+}
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+	margin-top: 20px;
+}
+
+th, td {
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
+}
+
+th {
+	background-color: #f2f2f2;
+}
+
+.inline {
+	display: inline-block;
+	margin-right: 10px;
+}
+
+#Rtntitle {
+	display: inline-block;
+	font-size: 1em;
+}
+</style>
 </head>
 <body>
 
-<h1>My Home</h1>
+	<h1>退貨單</h1>
 
-<span class="inline">退貨單編號:</span><p class="inline" th:text="${rtn.RtnNo}"></p>
+	<h2 id="Rtntitle">退貨單總數共有:</h2>
+	<td th:text="${rtnCount}"></td>
+	<table>
+		<thead>
+			<tr>
+				<th>退貨單編號</th>
+				<!-- Add more headers as needed -->
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td th:text="${rtn1}"></td>
+				<!-- Add more cells as needed -->
+			</tr>
+		</tbody>
+	</table>
 
-<!-- <p th:text="${myStudent.name}"></p> -->
+	<!-- 其他內容 -->
 
-<a href="/hello">Go to hello page</a></br>
+	<a href="/hello">Go to hello page</a>
+	</br>
 
-<img th:src="@{/images/dog.png}"/>
+	<img th:src="@{/images/dog.png}" />
 
-<form method='post' action='/login'>
-    帳號：<input type='text' name='userName'><br/>
-    密碼：<input type='text' name='userPassword'>
-    <input type='submit' value='登入'>
-</form>
+	<form method='post' action='/login'>
+		帳號：<input type='text' name='userName'><br /> 密碼：<input
+			type='text' name='userPassword'> <input type='submit'
+			value='登入'>
+	</form>
 
 </body>
 </html>

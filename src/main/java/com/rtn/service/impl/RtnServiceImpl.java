@@ -27,4 +27,9 @@ public class RtnServiceImpl implements RtnService {
 	public void updateRtn(Integer RtnNoId, RtnRequest rtnRequeset) {
 		rtnDao.updateRtn(RtnNoId, rtnRequeset);
 	}
+	@Override
+	public Integer getAllRtnIdCount() {
+		
+		return rtnDao.getAllRtnIdCount();
+	}
 }

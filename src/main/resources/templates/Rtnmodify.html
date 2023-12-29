@@ -177,25 +177,25 @@ main {
 				}
 				
 				function updateRtnOnServer() {
-				    // 不再需要从参数中获取 rtnNo
+
 				    const rtnNo = document.querySelector('#rtnNoInput').value;
 				    const rtnDate = document.querySelector('#rtnDateInput').value;
 				    const rtnWhy = document.querySelector('#rtnWhyInput').value;
 				    const refundAmount = document.querySelector('#refundAmountInput').value;
 				    const rtnStatus = document.querySelector('#rtnStatusInput').value;
 
-				    // 构建请求数据
+
 				    const rtnRequestData = {
-				        // 不再包含 empNo
+
 				        rtnNo: rtnNo,
 				        rtnDate: rtnDate,
 				        rtnWhy: rtnWhy,
 				        refundAmount: refundAmount,
 				        rtnStatus: rtnStatus
-				        // 添加其他字段，根据需要
+
 				    };
 
-				    // 发送PUT请求
+
 				    fetch('/Rtnmodify/' + rtnNo, {
 				        method: 'PUT',
 				        headers: {
@@ -205,17 +205,19 @@ main {
 				    })
 				    .then(response => {
 				        if (!response.ok) {
-				            throw new Error('网络响应不正常：' + response.status + ' ' + response.statusText);
+				            throw new Error('網路異常：' + response.status + ' ' + response.statusText);
 				        }
 				        return response.json();
 				    })
 				    .then(updatedRtn => {
 				        console.log('成功更新Rtn：', updatedRtn);
-				        // 可选择重定向到另一个页面或执行其他操作
+				        alert("成功更新Rtn");
+				        window.location.href = '/Rtn';
+
 				    })
 				    .catch(error => {
-				        console.error('更新Rtn时出错：', error.message);
-				        // 检查控制台以获取有关错误的更多详细信息
+				        console.error('更新Rtn有問題：', error.message);
+				        alert("更新Rtn有問題");
 				    });
 				}
 

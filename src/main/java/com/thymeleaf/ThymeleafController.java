@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.rtn.model.Rtn;
 import com.rtn.service.RtnService;
@@ -23,7 +24,7 @@ public class ThymeleafController {
 		return "index";
 	}
 
-    @GetMapping("/Rtn")
+	@GetMapping("/Rtn")
 	public String Rtn(Model model) {
 
 		Integer rtnCount = rtnService.getAllRtnIdCount();
@@ -32,18 +33,16 @@ public class ThymeleafController {
 		model.addAttribute("rtn1", rtn);
 		return "Rtn";
 	}
-    
-    @GetMapping("/Rtnmodify/{RtnNoid}")
-    public String updateProduct(@PathVariable Integer RtnNoId,
-    							Model model) {
-    	
-    	Rtn rtnPuting = rtnService.getProductById(RtnNoId);
-    	
-    	model.addAttribute("rtnPuting",rtnPuting);
-    	
-    	return "Rtnmodify";
-    }
-    
+
+	@GetMapping("/Rtnmodify")
+	public String updateProduct(@RequestParam(name = "rtnNo", required = false) Integer rtnNo, Model model) {
+		if (rtnNo != null) {
+			Rtn rtnPuting = rtnService.getProductById(rtnNo);
+			model.addAttribute("rtnPuting", rtnPuting);
+		}
+		return "Rtnmodify";
+	}
+
 //    @PutMapping("/Rtnmodify/{RtnNoId}")
 //    public ResponseEntity<Rtn> updateProduct(@PathVariable Integer RtnNoId,
 //    										 @RequestBody @Valid RtnRequest rtnRequeset){

@@ -58,7 +58,7 @@ main {
 }
 
 .modify-btn:hover {
-	background: #e76969;
+	background: yellowGreen;
 }
 </style>
 
@@ -125,7 +125,6 @@ main {
 				<tr th:each="rtn : ${rtnPuting}">
 					<td th:text="${rtn.empNo.empNo}"></td>
 					<td th:text="${rtn.rtnNo}"></td>
-					                    <td th:text="${rtn.rtnDate}"></td>
 					<td th:text="${rtn.rtnDate}"></td>
 					<td th:text="${rtn.rtnWhy}"></td>
 					<td th:text="${rtn.refundAmount}"></td>
@@ -134,7 +133,7 @@ main {
 					<td>
 						<button
 							onclick="redirectToModifyPage(this.getAttribute('data-rtnNo'))"
-							data-rtnNo="${rtn.rtnNo}" class="modify-btn">修改</button>
+							data-rtnNo="${rtn.rtnNo}" class="modify-btn">存檔</button>
 					</td>
 
 				</tr>

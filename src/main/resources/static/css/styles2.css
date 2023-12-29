@@ -96,21 +96,21 @@ section#callUs div#callUs-div {
   color: yellow !important;
 }
 
-#super-1::before {
-  content: "|";
-  padding: 2em;
-  margin-left: 10em;
-}
+/* #super-1::before { */
+/*   content: "|"; */
+/*   padding: 2em; */
+/*   margin-left: 10em; */
+/* } */
 
-#super-2::after {
-  content: "|";
-  padding: 2em;
-}
+/* #super-2::after { */
+/*   content: "|"; */
+/*   padding: 2em; */
+/* } */
 
-#callUs-a::after {
-  content: "|";
-  padding: 2em;
-}
+/* #callUs-a::after { */
+/*   content: "|"; */
+/*   padding: 2em; */
+/* } */
 
 @media screen and (max-width: 990px) {
   #super-1::before {

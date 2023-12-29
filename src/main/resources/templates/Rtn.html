@@ -37,7 +37,7 @@ th {
 }
 
 #Rtntitle {
-	display: inline;
+	display:inline;
 	font-size: 1em;
 	margin-top: 10px;
 }
@@ -92,9 +92,9 @@ th {
 		<table>
 			<thead>
 				<tr>
-					<!-- 				<th>退貨單編號</th> -->
-					<!-- 				<th>員工編號</th> -->
-					<!-- 				<th>訂單編號</th> -->
+					<th>退貨單編號</th>
+					<th>員工編號</th>
+<!-- 					<th>訂單編號</th> -->
 					<th>退貨日期</th>
 					<th>退貨原因</th>
 					<th>退款金額</th>
@@ -104,6 +104,9 @@ th {
 			</thead>
 			<tbody>
 				 <tr th:each="rtn : ${rtn1}">
+                    <td th:text="${rtn.empNo.empNo}"></td>
+                    <td th:text="${rtn.rtnNo}"></td>
+<!--                     <td th:text="${rtn.rtnDate}"></td> -->
                     <td th:text="${rtn.rtnDate}"></td>
                     <td th:text="${rtn.rtnWhy}"></td>
                     <td th:text="${rtn.refundAmount}"></td>

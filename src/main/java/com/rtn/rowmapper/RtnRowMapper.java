@@ -6,7 +6,7 @@ import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import com.emp.model.*;
 public class RtnRowMapper implements RowMapper<Rtn> {
     @Override
     public Rtn mapRow(ResultSet resultSet, int i) throws SQLException {
@@ -19,6 +19,10 @@ public class RtnRowMapper implements RowMapper<Rtn> {
         rtn.setRtnWhy(resultSet.getString("rtnWhy"));
         rtn.setRefundAmount(resultSet.getInt("refundAmount"));
         rtn.setRtnStatus(resultSet.getInt("rtnStatus"));
+        
+        Emp emp = new Emp();
+        emp.setEmpNo(resultSet.getInt("empNo"));
+        rtn.setEmpNo(emp);
         
         return rtn;
     }

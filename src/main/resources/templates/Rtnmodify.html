@@ -101,7 +101,7 @@ main {
 
 	<main>
 		<div id="Rtntitle">
-			<h1>退貨單</h1>
+			<h1>退貨單修改</h1>
 			<img src="/image/head/dog.png" th:src="@{/images/dog.png}" />
 			<p>退貨單總數共有:</p>
 			<p th:text="${rtnCount}"></p>
@@ -125,7 +125,7 @@ main {
 				<tr th:each="rtn : ${rtn1}">
 					<td th:text="${rtn.empNo.empNo}"></td>
 					<td th:text="${rtn.rtnNo}"></td>
-					<!--                     <td th:text="${rtn.rtnDate}"></td> -->
+					                    <td th:text="${rtn.rtnDate}"></td>
 					<td th:text="${rtn.rtnDate}"></td>
 					<td th:text="${rtn.rtnWhy}"></td>
 					<td th:text="${rtn.refundAmount}"></td>
@@ -141,15 +141,6 @@ main {
 			</tbody>
 		</table>
 
-		<!-- 其他內容 -->
-
-		<!-- <a href="/hello">Go to hello page</a> -->
-
-
-		<!-- <form method='post' action='/login'>
-            帳號：<input type='text' name='userName'><br /> 密碼：<input type='text' name='userPassword'> <input type='submit'
-                value='登入'>
-        </form> -->
 	</main>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

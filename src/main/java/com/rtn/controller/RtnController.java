@@ -16,7 +16,7 @@ import com.rtn.dto.RtnRequest;
 import com.rtn.model.Rtn;
 import com.rtn.service.RtnService;
 
-@RestController
+//@RestController
 public class RtnController {
 
     @Autowired

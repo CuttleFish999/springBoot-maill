@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,6 +32,30 @@ public class ThymeleafController {
 		model.addAttribute("rtn1", rtn);
 		return "Rtn";
 	}
+    
+    @GetMapping("/Rtnmodify")
+    public String updateProduct(Model model) {
+    	return "Rtnmodify";
+    }
+    
+//    @PutMapping("/Rtnmodify/{RtnNoId}")
+//    public ResponseEntity<Rtn> updateProduct(@PathVariable Integer RtnNoId,
+//    										 @RequestBody @Valid RtnRequest rtnRequeset){
+////    	判斷數據是否存在
+//    	Rtn rtn = rtnService.getProductById(RtnNoId);
+////    	System.out.println(rtn);
+//    	if(rtn == null) {
+//    		return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+//    	}else {
+////    		修改數據
+//    		rtnService.updateRtn(RtnNoId, rtnRequeset);
+//    		Rtn updatedRtn = rtnService.getProductById(RtnNoId);
+//    		return ResponseEntity.status(HttpStatus.OK).body(updatedRtn);
+//    	}
+//    	
+//    	return Rtnmodify
+//	
+//    }
 
 //    @GetMapping("/hello")
 //    public String hello() {

@@ -51,17 +51,16 @@ main {
 	margin-top: 10px;
 	font-size: 2em;
 }
-.modify-btn-c,
-.modify-btn {
-/* 	border: 1px solid #000; */
+
+.modify-btn-c, .modify-btn {
+	/* 	border: 1px solid #000; */
 	border-radius: 5px;
 	margin: 0 5px;
-    width: 50px;
+	width: 50px;
 }
-.modify-btn:hover,
-.modify-btn-c:hover{
 
-	color:white;
+.modify-btn:hover, .modify-btn-c:hover {
+	color: white;
 }
 
 .modify-btn:hover {
@@ -69,8 +68,16 @@ main {
 }
 
 .modify-btn-c:hover {
-
 	background: #e76969;
+}
+
+.input-text {
+	width: 100px;
+	text-align: center;
+}
+
+.input-text:focus {
+	color: red;
 }
 </style>
 
@@ -135,26 +142,21 @@ main {
 			</thead>
 			<tbody>
 				<tr th:each="rtn : ${rtnPuting}">
-					<td th:text="${rtn.empNo.empNo}"></td>
-					<td th:text="${rtn.rtnNo}"></td>
-					<td th:text="${rtn.rtnDate}"></td>
-					<td th:text="${rtn.rtnWhy}"></td>
-					<td th:text="${rtn.refundAmount}"></td>
-					<td th:text="${rtn.rtnStatus}"></td>
+					<td><input class="input-text" th:value="${rtn.empNo.empNo}"></td>
+					<td><input class="input-text" th:value="${rtn.rtnNo}"></td>
+					<td><input class="input-text" th:value="${rtn.rtnDate}"></td>
+					<td><input class="input-text" th:value="${rtn.rtnWhy}"></td>
+					<td><input class="input-text" th:value="${rtn.refundAmount}"></td>
+					<td><input class="input-text" th:value="${rtn.rtnStatus}"></td>
 
 					<td>
-						<button
-							onclick="redirectToModifyPage(this.getAttribute('data-rtnNo'))"
-							data-rtnNo="${rtn.rtnNo}" class="modify-btn">存檔</button>
-						<button
-							onclick="cancelAndRollBack()"
-							data-rtnNo="${rtn.rtnNo}" class="modify-btn-c">取消</button>
+						<button class="modify-btn" th:attr="data-rtnNo=${rtn.rtnNo}"
+							onclick="redirectToModifyPageAndReturn(this.getAttribute('data-rtnNo'))">存檔</button>
+						<button onclick="cancelAndRollBack()" data-rtnNo="${rtn.rtnNo}"
+							class="modify-btn-c">取消</button>
 					</td>
-
 				</tr>
 			</tbody>
-		</table>
-
 	</main>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -164,11 +166,11 @@ main {
 			console.log(rtnNo);
 			// Assuming modify.html is in the same directory as the current page.
 			// If it's in a different directory, adjust the path accordingly.
-// 			window.location.href = 'modify.html?rtnNo=' + rtnNo;
+			// 			window.location.href = 'modify.html?rtnNo=' + rtnNo;
 			window.location.href = 'Rtnmodify?rtnNo=' + rtnNo;
 		}
-		
-		function cancelAndRollBack(){
+
+		function cancelAndRollBack() {
 			window.location.href = '/Rtn';
 		}
 	</script>

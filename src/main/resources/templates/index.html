@@ -103,16 +103,12 @@ th {
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<!-- 				<td th:text="${rtn1.rtnNo}"></td> -->
-					<!-- 				<td th:text="${rtn1.empNo}"></td> -->
-					<!-- 				<td th:text="${rtn1.ordNo}"></td> -->
-					<td th:text="${rtn1.rtnDate}"></td>
-					<td th:text="${rtn1.rtnWhy}"></td>
-					<td th:text="${rtn1.refundAmount}"></td>
-					<td th:text="${rtn1.rtnStatus}"></td>
-					<!-- Add more cells as needed -->
-				</tr>
+				 <tr th:each="rtn : ${rtn1}">
+                    <td th:text="${rtn.rtnDate}"></td>
+                    <td th:text="${rtn.rtnWhy}"></td>
+                    <td th:text="${rtn.refundAmount}"></td>
+                    <td th:text="${rtn.rtnStatus}"></td>
+                </tr>
 			</tbody>
 		</table>
 

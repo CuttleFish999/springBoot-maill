@@ -1,6 +1,8 @@
 package com.rtn.service.impl;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -31,5 +33,9 @@ public class RtnServiceImpl implements RtnService {
 	public Integer getAllRtnIdCount() {
 		
 		return rtnDao.getAllRtnIdCount();
+	}
+	@Override
+	public List<Rtn> getAllRtnData() {
+		return rtnDao.getAllRtnData();
 	}
 }

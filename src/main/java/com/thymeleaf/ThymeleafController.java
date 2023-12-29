@@ -1,5 +1,7 @@
 package com.thymeleaf;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
@@ -20,8 +22,8 @@ public class ThymeleafController {
     public String home(Model model) {
 
     	Integer rtnCount = rtnService.getAllRtnIdCount();
-        Rtn rtn = rtnService.getProductById(1);
-        
+//        Rtn rtn = rtnService.getProductById(1);
+        List<Rtn> rtn = rtnService.getAllRtnData();
         model.addAttribute("rtnCount", rtnCount);
         model.addAttribute("rtn1",rtn);
         return "index";

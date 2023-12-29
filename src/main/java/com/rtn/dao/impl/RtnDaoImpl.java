@@ -90,6 +90,24 @@ public class RtnDaoImpl implements RtnDao {
 		String sql = "SELECT COUNT(*) FROM RTN;";
 		return namedParameterJdbcTemplate.queryForObject(sql, new MapSqlParameterSource(), Integer.class);
 	}
+
+	@Override
+	public List<Rtn> getAllRtnData() {
+		String sql = "SELECT rtnNo ,empNo,ordNo,rtnDate,rtnWhy,refundAmount,rtnStatus FROM rtn;";
+		
+		Map<String , Object> map = new HashMap<>();
+
+		
+		List<Rtn> RtnList = namedParameterJdbcTemplate.query(sql,map,new RtnRowMapper());
+		
+		if(RtnList.size() > 0) {
+			return RtnList;
+		}else {
+			return null;
+		}
+		
+
+	}
 	
 	
 	

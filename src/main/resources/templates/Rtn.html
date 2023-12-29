@@ -123,22 +123,21 @@ main {
 			</thead>
 			<tbody>
 				<tr th:each="rtn : ${rtn1}">
-					<td th:text="${rtn.empNo.empNo}"></td>
 					<td th:text="${rtn.rtnNo}"></td>
-					<!--                     <td th:text="${rtn.rtnDate}"></td> -->
+					<td th:text="${rtn.empNo.empNo}"></td>
 					<td th:text="${rtn.rtnDate}"></td>
 					<td th:text="${rtn.rtnWhy}"></td>
 					<td th:text="${rtn.refundAmount}"></td>
 					<td th:text="${rtn.rtnStatus}"></td>
-
 					<td>
 						<button
-							onclick="redirectToModifyPage(this.getAttribute('data-rtnNo'))"
-							data-rtnNo="${rtn.rtnNo}" class="modify-btn">修改</button>
+							onclick="redirectToModifyPage(this.getAttribute('data-RtnNoId'))"
+							th:attr="data-RtnNoId=${rtn.rtnNo}" class="modify-btn">修改</button>
 					</td>
 
 				</tr>
 			</tbody>
+
 		</table>
 
 		<!-- 其他內容 -->
@@ -156,10 +155,12 @@ main {
 
 	<script>
 		function redirectToModifyPage(rtnNo) {
+			console.log(rtnNo);
 			// Assuming modify.html is in the same directory as the current page.
 			// If it's in a different directory, adjust the path accordingly.
-// 			window.location.href = 'modify.html?rtnNo=' + rtnNo;
-			window.location.href = 'Rtnmodify';
+			// 			window.location.href = 'modify.html?rtnNo=' + rtnNo;
+			// 			window.location.href = 'Rtnmodify';
+						window.location.href = 'Rtnmodify?rtnNo=' + rtnNo;
 		}
 	</script>
 

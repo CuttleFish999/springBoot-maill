@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.rtn.model.Rtn;
 import com.rtn.service.RtnService;
@@ -33,8 +33,14 @@ public class ThymeleafController {
 		return "Rtn";
 	}
     
-    @GetMapping("/Rtnmodify")
-    public String updateProduct(Model model) {
+    @GetMapping("/Rtnmodify/{RtnNoid}")
+    public String updateProduct(@PathVariable Integer RtnNoId,
+    							Model model) {
+    	
+    	Rtn rtnPuting = rtnService.getProductById(RtnNoId);
+    	
+    	model.addAttribute("rtnPuting",rtnPuting);
+    	
     	return "Rtnmodify";
     }
     

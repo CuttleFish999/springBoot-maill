@@ -122,7 +122,7 @@ main {
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="rtn : ${rtn1}">
+				<tr th:each="rtn : ${rtnPuting}">
 					<td th:text="${rtn.empNo.empNo}"></td>
 					<td th:text="${rtn.rtnNo}"></td>
 					                    <td th:text="${rtn.rtnDate}"></td>
@@ -147,10 +147,11 @@ main {
 
 	<script>
 		function redirectToModifyPage(rtnNo) {
+			console.log(rtnNo);
 			// Assuming modify.html is in the same directory as the current page.
 			// If it's in a different directory, adjust the path accordingly.
 // 			window.location.href = 'modify.html?rtnNo=' + rtnNo;
-			window.location.href = 'Rtnmodify';
+			window.location.href = 'Rtnmodify?rtnNo=' + rtnNo;
 		}
 	</script>
 

@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.rtn.contant.RtnCateGory;
 import com.rtn.dao.RtnDao;
 import com.rtn.dto.RtnRequest;
 import com.rtn.model.Rtn;
@@ -16,7 +17,15 @@ public class RtnServiceImpl implements RtnService {
 
     @Autowired
     private RtnDao rtnDao;
+    
+    
+    
+    
     @Override
+	public List<Rtn> getAllRtns(RtnCateGory rtnCateGory) {
+		return rtnDao.getAllRtns(rtnCateGory);
+	}
+	@Override
     public Rtn getProductById(Integer rtnNo) {
         return rtnDao.getRtnNoById(rtnNo);
     }

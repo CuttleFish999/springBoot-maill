@@ -12,6 +12,7 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
 
+import com.rtn.contant.RtnCateGory;
 import com.rtn.dao.RtnDao;
 import com.rtn.dto.RtnRequest;
 import com.rtn.model.Rtn;
@@ -23,6 +24,22 @@ public class RtnDaoImpl implements RtnDao {
     @Autowired
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
+    
+	@Override
+	public List<Rtn> getAllRtns(RtnCateGory rtnCateGory) {
+		String sql = "SELECT rtnNo, empNo, ordNo, rtnDate, rtnWhy, refundAmount, rtnStatus " +
+					"FROM rtn WHERE 1=1";
+		Map<String , Object> map = new HashMap<>();
+		
+		if(rtnCateGory != null) {
+			sql += " AND rtnWhy = :RtnCateGory";
+			map.put("RtnCateGory", rtnCateGory.name());
+		}
+		
+		List<Rtn> RtnList = namedParameterJdbcTemplate.query(sql, map , new RtnRowMapper());
+		
+		return RtnList;
+	}
 
 	@Override
 	public Rtn getRtnNoById(Integer rtnNo) {

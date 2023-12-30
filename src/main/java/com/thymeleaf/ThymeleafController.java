@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.rtn.contant.RtnCateGory;
 import com.rtn.dto.RtnRequest;
 import com.rtn.model.Rtn;
 import com.rtn.service.RtnService;
@@ -25,6 +26,16 @@ import com.rtn.service.RtnService;
 public class ThymeleafController {
 	@Autowired
 	public RtnService rtnService;
+	
+//	條件查詢:根據原因查詢
+	@GetMapping("/Rtns")
+	public ResponseEntity<List<Rtn>> getAllRtns
+	(@RequestParam(required = false) RtnCateGory rtnCateGory
+	) {
+		List<Rtn> RtnList = rtnService.getAllRtns(rtnCateGory);
+
+		return ResponseEntity.status(HttpStatus.OK).body(RtnList);
+	}
 
 	@GetMapping("/")
 	public String index(Model model) {

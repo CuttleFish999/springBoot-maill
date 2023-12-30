@@ -1,5 +1,7 @@
 package com.rtn.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +12,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.rtn.contant.RtnCateGory;
 import com.rtn.dto.RtnRequest;
 import com.rtn.model.Rtn;
 import com.rtn.service.RtnService;
@@ -22,7 +25,16 @@ public class RtnController {
     @Autowired
     private RtnService rtnService;
 
-
+    @GetMapping("/Rtns")
+    public ResponseEntity<List<Rtn>> getAllRtns(
+    		@RequestParam(required = false) RtnCateGory rtnCateGory
+	){
+    	List<Rtn> RtnList = rtnService.getAllRtns(rtnCateGory);
+    	
+    	return ResponseEntity.status(HttpStatus.OK).body(RtnList);
+    }
+    
+    
     @GetMapping("/Rtn/{rtnNo}")
     public ResponseEntity<Rtn> getProduct(@PathVariable Integer rtnNo){
     	Rtn rtn = rtnService.getProductById(rtnNo);

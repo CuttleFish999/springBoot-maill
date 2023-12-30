@@ -2,86 +2,81 @@
 <html lang="en">
 
 <head>
-<meta charset="utf-8" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<meta name="description" content="" />
-<meta name="author" content="" />
-<title>租你好運</title>
-<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-<!-- Core theme CSS (includes Bootstrap)-->
-<link href="css/styles.css" rel="stylesheet" />
-<link rel="stylesheet" href="css/loginstyle.css">
-<link rel="stylesheet" href="css/styles2.css">
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<title>租你好運</title>
+	<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+	<!-- Core theme CSS (includes Bootstrap)-->
+	<link href="css/styles.css" rel="stylesheet" />
+	<link rel="stylesheet" href="css/loginstyle.css">
+	<link rel="stylesheet" href="css/styles2.css">
 </head>
 <style>
-* {
-	padding: 0;
-	margin: 0;
-}
+	* {
+		padding: 0;
+		margin: 0;
+	}
 
-body {
-	font-family: Arial, sans-serif;
-}
+	body {
+		font-family: Arial, sans-serif;
+	}
 
-table {
-	border-collapse: collapse;
-	width: 100%;
-	margin-top: 20px;
-	border: 1px solid #dddddd;
-}
+	table {
+		border-collapse: collapse;
+		width: 100%;
+		margin-top: 20px;
+		border: 1px solid #dddddd;
+	}
 
-th, td {
-	border: 1px solid #dddddd;
-	text-align: center;
-	padding: 8px;
-}
+	th,
+	td {
+		border: 1px solid #dddddd;
+		text-align: center;
+		padding: 8px;
+	}
 
-th {
-	background-color: #f2f2f2;
-}
+	th {
+		background-color: #f2f2f2;
+	}
 
-main {
-	position: relative;
-	top: 15%;
-}
+	main {
+		position: relative;
+		top: 15%;
+	}
 
-#Rtntitle {
-	display: flex;
-	margin-top: 10px;
-	font-size: 2em;
-}
+	#Rtntitle {
+		display: flex;
+		margin-top: 10px;
+		font-size: 2em;
+	}
 
-.modify-btn {
-	border: 1px solid #000;
-	border-radius: 5px;
-	width: 50px;
-}
+	.modify-btn {
+		border: 1px solid #000;
+		border-radius: 5px;
+		width: 50px;
+	}
 
-.modify-btn:hover {
-	background: #e76969;
-}
+	.modify-btn:hover {
+		background: #e76969;
+	}
 </style>
 
 <body>
 
 	<!-- Navigation-->
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
-		id="mainNav">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
 		<div class="container px-4">
 			<a class="navbar-brand" href="/">你好</a>
-			<button class="navbar-toggler" type="button"
-				data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
-				aria-controls="navbarResponsive" aria-expanded="false"
-				aria-label="Toggle navigation">
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+				aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ms-auto">
-					<li class="nav-item"><a class="nav-link super-money"
-						id="super-1" href="#">租賃服務</a></li>
-					<li class="nav-item"><a class="nav-link super-money"
-						id="super-2" href="#">購物商城</a></li>
+					<li class="nav-item"><a class="nav-link super-money" id="super-1" href="#">租賃服務</a></li>
+					<li class="nav-item"><a class="nav-link super-money" id="super-2" href="#">購物商城</a></li>
 					<!-- <li class="nav-item"><a class="nav-link super-money" href="#">|</a></li> -->
 
 				</ul>
@@ -89,11 +84,9 @@ main {
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ms-auto">
 					<!-- <li class="nav-item"><a class="nav-link" href="">|</a></li> -->
-					<li class="nav-item"><a class="nav-link" href="#about"
-						id="join-member-btn2">會員中心</a></li>
+					<li class="nav-item"><a class="nav-link" href="#about" id="join-member-btn2">會員中心</a></li>
 					<li class="nav-item"><a class="nav-link" href="#announcement">公告</a></li>
-					<li class="nav-item"><a class="nav-link" href="#callUs"
-						id="callUs-a">關於我們</a></li>
+					<li class="nav-item"><a class="nav-link" href="#callUs" id="callUs-a">關於我們</a></li>
 					<!-- <li class="nav-item"><a class="nav-link" href="">|</a></li> -->
 				</ul>
 			</div>
@@ -107,6 +100,14 @@ main {
 			<p>退貨單總數共有:</p>
 			<p th:text="${rtnCount}"></p>
 			<p>張</p>
+			<select name="Query-btn" id="Query-btn" onclick="QueryButtonEven()">
+				<option value="REASON1">Reason1</option>
+				<option value="REASON2">Reason2</option>
+				<option value="REASON3">Reason3</option>
+				<option value="REASON4">REASON4</option>
+				<option value="REASON5">Reason5</option>
+			</select>
+
 		</div>
 		<table>
 			<thead>
@@ -131,8 +132,7 @@ main {
 					<td th:text="${rtn.refundAmount}"></td>
 					<td th:text="${rtn.rtnStatus}"></td>
 					<td>
-						<button
-							onclick="redirectToModifyPage(this.getAttribute('data-RtnNoId'))"
+						<button onclick="redirectToModifyPage(this.getAttribute('data-RtnNoId'))"
 							th:attr="data-RtnNoId=${rtn.rtnNo}" class="modify-btn">修改</button>
 					</td>
 
@@ -151,8 +151,7 @@ main {
                 value='登入'>
         </form> -->
 	</main>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
 	<script>
 		function redirectToModifyPage(rtnNo) {
@@ -161,7 +160,28 @@ main {
 			// If it's in a different directory, adjust the path accordingly.
 			// 			window.location.href = 'modify.html?rtnNo=' + rtnNo;
 			// 			window.location.href = 'Rtnmodify';
-						window.location.href = 'Rtnmodify?rtnNo=' + rtnNo;
+			window.location.href = 'Rtnmodify?rtnNo=' + rtnNo;
+		}
+
+
+		function QueryButtonEven() {
+
+			let selectedReason = document.getElementById("Query-btn").value;
+
+
+			let xhr = new XMLHttpRequest();
+			xhr.open("GET", "/Rtns?rtnCateGory=" + selectedReason, true);
+
+			xhr.onreadystatechange = function () {
+				if (xhr.readyState == 4 && xhr.status == 200) {
+
+					let responseData = JSON.parse(xhr.responseText);
+
+					console.log(responseData);
+				}
+			};
+
+			xhr.send();
 		}
 	</script>
 

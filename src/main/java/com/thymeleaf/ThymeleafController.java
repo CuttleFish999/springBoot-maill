@@ -36,7 +36,10 @@ public class ThymeleafController {
 
 		return ResponseEntity.status(HttpStatus.OK).body(RtnList);
 	}
-
+	
+	
+	
+	
 	@GetMapping("/")
 	public String index(Model model) {
 		return "index";
@@ -45,10 +48,16 @@ public class ThymeleafController {
 	@GetMapping("/Rtn")
 	public String Rtn(Model model) {
 
+//		取得所有Rtn資料
 		Integer rtnCount = rtnService.getAllRtnIdCount();
 		List<Rtn> rtn = rtnService.getAllRtnData();
+//		注入QueryButtonEven資料
+		
+//		String QueryButtonValue = rtnService.getAllKeepRtnWhy();
+		
 		model.addAttribute("rtnCount", rtnCount);
 		model.addAttribute("rtn1", rtn);
+//		model.addAttribute("QueryButtonValue", QueryButtonValue);
 		return "Rtn";
 	}
 

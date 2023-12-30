@@ -100,13 +100,14 @@
 			<p>退貨單總數共有:</p>
 			<p th:text="${rtnCount}"></p>
 			<p>張</p>
-			<select name="Query-btn" id="Query-btn" onclick="QueryButtonEven()">
+			<select name="Query-btn" id="Query-btn" >
 				<option value="REASON1">Reason1</option>
 				<option value="REASON2">Reason2</option>
 				<option value="REASON3">Reason3</option>
 				<option value="REASON4">REASON4</option>
 				<option value="REASON5">Reason5</option>
 			</select>
+			<button type="button" onclick="QueryButtonEven()">確定</button>
 
 		</div>
 		<table>
@@ -187,58 +188,29 @@
 		
 		
 		function updateTable(data) {
-		    let Rtn_Table = document.getElementById("Rtn-Table");
+		    let tbody = document.querySelector("tbody");
 
-		    // 獲取所有 td 元素
-		    let allTds = Rtn_Table.querySelectorAll("td");
-
-		    // 遍歷並刪除每個 td 元素
-		    allTds.forEach(td => {
-		        td.remove();
-		    });
+		    // 清空表格內容
+		    tbody.innerHTML = "";
 
 		    // 將新資料加入表格
 		    data.forEach(function (rtn) {
-		        let newRow = Rtn_Table.insertRow();
+		        let newRow = tbody.insertRow();
 
-		        for (let i = 0; i < 7; i++) {
-		            let cell = newRow.insertCell(i);
-		            // 根據 rnt 對象的屬性和順序，將相應的數據放入單元格
-		            switch (i) {
-		                case 0:
-		                    cell.innerText = rtn.rtnNo;
-		                    break;
-		                case 1:
-		                    cell.innerText = rtn.empNo.empNo;
-		                    break;
-		                case 2:
-		                    cell.innerText = rtn.rtnDate;
-		                    break;
-		                case 3:
-		                    cell.innerText = rtn.rtnWhy;
-		                    break;
-		                case 4:
-		                    cell.innerText = rtn.refundAmount;
-		                    break;
-		                case 5:
-		                    cell.innerText = rtn.rtnStatus;
-		                    break;
-		                case 6:
-		                    cell.innerHTML = '<button onclick="redirectToModifyPage(' + rtn.rtnNo + ')" class="modify-btn">修改</button>';
-		                    break;
-		                default:
-		                    // 如果有其他列，可以在這裡添加相應的處理邏輯
-		                    break;
+		        // 使用 for 迴圈，一一將資料加入每一列
+		        for (let key in rtn) {
+		            if (key !== 'rtnNo') { // 排除 rtnNo，因為它已經在第一欄了
+		                let cell = newRow.insertCell();
+		                cell.className = "Rtn-Table-td";
+		                cell.innerText = rtn[key];
 		            }
 		        }
+
+		        // 在最後一列加入修改按鈕
+		        let modifyCell = newRow.insertCell();
+		        modifyCell.innerHTML = '<button onclick="redirectToModifyPage(' + rtn.rtnNo + ')" class="modify-btn">修改</button>';
 		    });
 		}
-
-
-
-
-
-
 
 	</script>
 

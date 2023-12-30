@@ -1,5 +1,6 @@
 package com.product.controller;
 
+import com.product.constant.ProductCategory;
 import com.product.dto.ProductRequest;
 import com.product.model.Product;
 import com.product.service.ProductService;
@@ -9,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 public class ProductController {
@@ -17,10 +19,20 @@ public class ProductController {
     private ProductService productService;
 
 
+    @GetMapping("/products")
+    public ResponseEntity<List<Product>> getProducts(
+            @RequestParam(required = false) ProductCategory category,
+            @RequestParam(required = false) String search
+    ) {
+        List<Product> productList =  productService.getProducts(category,search);
+        System.out.println(productList);
+        return ResponseEntity.status(HttpStatus.OK).body(productList);
+    }
+
     @GetMapping("/products/{productId}")
     public ResponseEntity<Product> getProduct(@PathVariable Integer productId){
         Product product = productService.getProductById(productId);
-
+        System.out.println(product);
         if(product != null){
             return ResponseEntity.status(HttpStatus.OK).body(product);
         }else{
@@ -30,6 +42,8 @@ public class ProductController {
 
     @PostMapping("/products")
     public ResponseEntity<Product> createProduct(@RequestBody @Valid ProductRequest productRequest){
+
+
         Integer productId  = productService.createProduct(productRequest);
 
         Product product = productService.getProductById(productId);

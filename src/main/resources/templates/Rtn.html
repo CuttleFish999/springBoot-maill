@@ -107,11 +107,13 @@ main {
 			<p>退貨單總數共有:</p>
 			<p th:text="${rtnCount}"></p>
 			<p>張</p>
-			
+
 			<select name="Query-btn" id="Query-btn">
 				<option th:each="selectValue : ${QueryButtonValue}"
+					th:value="${#strings.toUpperCase(selectValue)}"
 					th:text="${selectValue}"></option>
 			</select>
+
 
 			<button type="button" onclick="QueryButtonEven()">確定</button>
 

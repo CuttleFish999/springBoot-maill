@@ -124,13 +124,13 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="rtn : ${rtn1}">
-					<td th:text="${rtn.rtnNo}"></td>
-					<td th:text="${rtn.empNo.empNo}"></td>
-					<td th:text="${rtn.rtnDate}"></td>
-					<td th:text="${rtn.rtnWhy}"></td>
-					<td th:text="${rtn.refundAmount}"></td>
-					<td th:text="${rtn.rtnStatus}"></td>
+				<tr th:each="rtn : ${rtn1}" id=Rtn-Table>
+					<td class="Rtn-Table-td" th:text="${rtn.rtnNo}"></td>
+					<td class="Rtn-Table-td" th:text="${rtn.empNo.empNo}"></td>
+					<td class="Rtn-Table-td" th:text="${rtn.rtnDate}"></td>
+					<td class="Rtn-Table-td" th:text="${rtn.rtnWhy}"></td>
+					<td class="Rtn-Table-td" th:text="${rtn.refundAmount}"></td>
+					<td class="Rtn-Table-td" th:text="${rtn.rtnStatus}"></td>
 					<td>
 						<button onclick="redirectToModifyPage(this.getAttribute('data-RtnNoId'))"
 							th:attr="data-RtnNoId=${rtn.rtnNo}" class="modify-btn">修改</button>
@@ -176,13 +176,70 @@
 				if (xhr.readyState == 4 && xhr.status == 200) {
 
 					let responseData = JSON.parse(xhr.responseText);
-
+					updateTable(responseData);
+					
 					console.log(responseData);
 				}
 			};
 
 			xhr.send();
 		}
+		
+		
+		function updateTable(data) {
+		    let Rtn_Table = document.getElementById("Rtn-Table");
+
+		    // 獲取所有 td 元素
+		    let allTds = Rtn_Table.querySelectorAll("td");
+
+		    // 遍歷並刪除每個 td 元素
+		    allTds.forEach(td => {
+		        td.remove();
+		    });
+
+		    // 將新資料加入表格
+		    data.forEach(function (rtn) {
+		        let newRow = Rtn_Table.insertRow();
+
+		        for (let i = 0; i < 7; i++) {
+		            let cell = newRow.insertCell(i);
+		            // 根據 rnt 對象的屬性和順序，將相應的數據放入單元格
+		            switch (i) {
+		                case 0:
+		                    cell.innerText = rtn.rtnNo;
+		                    break;
+		                case 1:
+		                    cell.innerText = rtn.empNo.empNo;
+		                    break;
+		                case 2:
+		                    cell.innerText = rtn.rtnDate;
+		                    break;
+		                case 3:
+		                    cell.innerText = rtn.rtnWhy;
+		                    break;
+		                case 4:
+		                    cell.innerText = rtn.refundAmount;
+		                    break;
+		                case 5:
+		                    cell.innerText = rtn.rtnStatus;
+		                    break;
+		                case 6:
+		                    cell.innerHTML = '<button onclick="redirectToModifyPage(' + rtn.rtnNo + ')" class="modify-btn">修改</button>';
+		                    break;
+		                default:
+		                    // 如果有其他列，可以在這裡添加相應的處理邏輯
+		                    break;
+		            }
+		        }
+		    });
+		}
+
+
+
+
+
+
+
 	</script>
 
 </body>

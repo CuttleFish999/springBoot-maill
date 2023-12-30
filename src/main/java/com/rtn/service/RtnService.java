@@ -8,6 +8,9 @@ import com.rtn.model.Rtn;
 
 public interface RtnService {
 	
+//	Rtn選單value注入功能
+	List<String> getAllKeepRtnWhy();
+	
 	public List<Rtn> getAllRtns(RtnCateGory rtnCateGory);
 
     Rtn getProductById(Integer productId);

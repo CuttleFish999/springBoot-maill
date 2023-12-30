@@ -40,7 +40,18 @@ public class RtnDaoImpl implements RtnDao {
 		
 		return RtnList;
 	}
+	
+//	Rtn選單value注入功能
+	@Override
+	public List<String> getAllKeepRtnWhy() {
+	    String sql = "SELECT DISTINCT rtnWhy FROM rtn";
 
+	    return namedParameterJdbcTemplate.queryForList(sql, new HashMap<>(), String.class);
+	}
+
+
+
+	
 	@Override
 	public Rtn getRtnNoById(Integer rtnNo) {
 		String sql = "SELECT rtnNo, empNo, ordNo, rtnDate, rtnWhy, refundAmount, rtnStatus "

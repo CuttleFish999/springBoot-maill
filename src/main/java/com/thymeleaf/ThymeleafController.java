@@ -53,11 +53,11 @@ public class ThymeleafController {
 		List<Rtn> rtn = rtnService.getAllRtnData();
 //		注入QueryButtonEven資料
 		
-//		String QueryButtonValue = rtnService.getAllKeepRtnWhy();
+		List<String>QueryButtonValue = rtnService.getAllKeepRtnWhy();
 		
 		model.addAttribute("rtnCount", rtnCount);
 		model.addAttribute("rtn1", rtn);
-//		model.addAttribute("QueryButtonValue", QueryButtonValue);
+		model.addAttribute("QueryButtonValue", QueryButtonValue);
 		return "Rtn";
 	}
 

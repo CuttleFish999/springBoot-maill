@@ -25,6 +25,12 @@ public class RtnServiceImpl implements RtnService {
 	public List<Rtn> getAllRtns(RtnCateGory rtnCateGory) {
 		return rtnDao.getAllRtns(rtnCateGory);
 	}
+    
+//	Rtn選單value注入功能
+    public List<String> getAllKeepRtnWhy() {
+		return rtnDao.getAllKeepRtnWhy();
+	}
+    
 	@Override
     public Rtn getProductById(Integer rtnNo) {
         return rtnDao.getRtnNoById(rtnNo);

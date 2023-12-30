@@ -8,8 +8,11 @@ import com.rtn.model.Rtn;
 
 public interface RtnDao {
 	
-	List<Rtn> getAllRtns(RtnCateGory RtnCateGory);
+//	Rtn選單value注入功能
+	List<String> getAllKeepRtnWhy();
 	
+	List<Rtn> getAllRtns(RtnCateGory RtnCateGory);
+		
 	Rtn getRtnNoById(Integer rtnNo);
 	
 	Integer createRtn(RtnRequest rtnRequest);

@@ -13,6 +13,12 @@
 <link href="css/styles.css" rel="stylesheet" />
 <link rel="stylesheet" href="css/loginstyle.css">
 <link rel="stylesheet" href="css/styles2.css">
+
+<!-- 測試用 -->
+<link rel="stylesheet" href="../static/css/loginstyle.css">
+<link rel="stylesheet" href="../static/css/styles.css">
+<link rel="stylesheet" href="../static/css/styles2.css">
+
 </head>
 <style>
 * {
@@ -103,7 +109,7 @@ main {
 	<main>
 		<div id="Rtntitle">
 			<h1>退貨單</h1>
-			<img src="/image/head/dog.png" th:src="@{/images/dog.png}" />
+			<img src="../static/images/dog.png" th:src="@{/images/dog.png}" />
 			<p>退貨單總數共有:</p>
 			<p th:text="${rtnCount}"></p>
 			<p>張</p>
@@ -207,11 +213,11 @@ main {
 
 				// 使用 for 迴圈，一一將資料加入每一列
 				for ( let key in rtn) {
-					if (key !== 'rtnNo') { // 排除 rtnNo，因為它已經在第一欄了
+// 					if (key !== 'rtnNo') { // 排除 rtnNo，因為它已經在第一欄了
 						let cell = newRow.insertCell();
 						cell.className = "Rtn-Table-td";
 						cell.innerText = rtn[key];
-					}
+// 					}
 				}
 
 				// 在最後一列加入修改按鈕

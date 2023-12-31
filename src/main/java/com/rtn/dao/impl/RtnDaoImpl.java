@@ -29,8 +29,11 @@ public class RtnDaoImpl implements RtnDao {
 		String sql = "SELECT rtnNo, empNo, ordNo, rtnDate, rtnWhy, refundAmount, rtnStatus " + "FROM rtn WHERE 1=1";
 		Map<String, Object> map = new HashMap<>();
 
-		addFilteringSQL(sql, map, rtnQueryParams);
-
+		sql = addFilteringSQL(sql, map, rtnQueryParams);
+		
+		
+		System.out.println("addFilteringSQL: " + (sql));
+		
 		List<Rtn> RtnList = namedParameterJdbcTemplate.query(sql, map, new RtnRowMapper());
 
 		return RtnList;
@@ -126,15 +129,29 @@ public class RtnDaoImpl implements RtnDao {
 	}
 
 	public String addFilteringSQL(String sql, Map<String, Object> map, RtnQueryParams rtnQueryParams) {
-		if (rtnQueryParams.getRtnCateGory() != null) {
-			sql += " AND rtnWhy = :RtnCateGory";
-			map.put("RtnCateGory", rtnQueryParams.getRtnCateGory().name());
-		}
+	    if (rtnQueryParams.getRtnCateGory() != null) {
+	        System.out.println("rtnQueryParams.getRtnCateGory(): " + rtnQueryParams.getRtnCateGory());
+	        System.out.println("getRtnCateGory: " + (rtnQueryParams.getRtnCateGory() != null));
 
-		if (rtnQueryParams.getSearch() != null) {
-			sql += " AND rtnWhy = :rtnWhy";
-			map.put("search", "%" + rtnQueryParams.getRtnDate() + "%");
-		}
+	        sql += " AND rtnWhy = :rtnWhy";
+
+	        System.out.println("getRtnCateGory sql: " + sql);
+
+	        map.put("rtnWhy", rtnQueryParams.getRtnCateGory().name());
+	    }
+
+
+
+//		if (rtnQueryParams.getSearch() != null) {
+//			
+//			System.out.println("rtnWhy: " + (rtnQueryParams.getSearch() != null));
+//			
+//			sql += " AND rtnWhy = :rtnWhy";
+//			
+//			System.out.println("rtnWhy sql: " + sql);
+//			
+//			map.put("search", "%" + rtnQueryParams.getRtnDate() + "%");
+//		}
 
 		return sql;
 	}

@@ -62,9 +62,6 @@ public class ThymeleafController {
 		return ResponseEntity.status(HttpStatus.OK).body(RtnList);
 	}
 	
-	
-	
-	
 	@GetMapping("/")
 	public String index(Model model) {
 		return "index";

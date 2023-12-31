@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.rtn.contant.RtnCateGory;
 import com.rtn.dao.RtnDao;
+import com.rtn.dto.RtnQueryParams;
 import com.rtn.dto.RtnRequest;
 import com.rtn.model.Rtn;
 import com.rtn.service.RtnService;
@@ -22,8 +22,8 @@ public class RtnServiceImpl implements RtnService {
     
     
     @Override
-	public List<Rtn> getAllRtns(RtnCateGory rtnCateGory) {
-		return rtnDao.getAllRtns(rtnCateGory);
+	public List<Rtn> getAllRtns(RtnQueryParams rtnQueryParams) {
+		return rtnDao.getAllRtns(rtnQueryParams);
 	}
     
 //	Rtn選單value注入功能

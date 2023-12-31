@@ -3,6 +3,7 @@ package com.product.service.impl;
 
 import com.product.constant.ProductCategory;
 import com.product.dao.ProductDao;
+import com.product.dto.ProductQueryParams;
 import com.product.dto.ProductRequest;
 import com.product.model.Product;
 import com.product.service.ProductService;
@@ -18,9 +19,11 @@ public class ProductServiceImpl implements ProductService {
     private ProductDao productDao;
 
     @Override
-    public List<Product> getProducts(ProductCategory category,String search) {
-        return productDao.getProducts(category,search);
+    public List<Product> getProducts(ProductQueryParams productQueryParams) {
+        return productDao.getProducts(productQueryParams);
     }
+
+
 
     @Override
     public Product getProductById(Integer productId) {

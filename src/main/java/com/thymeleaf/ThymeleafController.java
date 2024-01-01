@@ -15,16 +15,19 @@ import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.emp.dto.EmpRegisterRequest;
+import com.emp.model.Emp;
+import com.emp.service.EmpService;
 import com.rtn.contant.RtnCateGory;
 import com.rtn.dto.RtnQueryParams;
 import com.rtn.dto.RtnRequest;
 import com.rtn.model.Rtn;
 import com.rtn.service.RtnService;
-
 
 @Validated
 @Controller
@@ -32,20 +35,17 @@ import com.rtn.service.RtnService;
 public class ThymeleafController {
 	@Autowired
 	public RtnService rtnService;
-	
+
 //	條件查詢:根據原因查詢
 	@GetMapping("/Rtns")
 	public ResponseEntity<List<Rtn>> getAllRtns(
 //		查詢條件 Filtering
-		@RequestParam(required = false) RtnCateGory rtnCateGory ,
-		@RequestParam(required = false) String search ,
+			@RequestParam(required = false) RtnCateGory rtnCateGory, @RequestParam(required = false) String search,
 //		排序條件Sorting
-		@RequestParam(defaultValue = "rtnDate") String rtnDate ,
-		@RequestParam(defaultValue = "desc") String sort ,
+			@RequestParam(defaultValue = "rtnDate") String rtnDate, @RequestParam(defaultValue = "desc") String sort,
 //		分頁Pagination
-		@RequestParam(defaultValue = "5") @Max(1000) @Min(0) Integer limit ,
-		@RequestParam(defaultValue = "0") @Min(0) Integer offset
-	) {
+			@RequestParam(defaultValue = "5") @Max(1000) @Min(0) Integer limit,
+			@RequestParam(defaultValue = "0") @Min(0) Integer offset) {
 		RtnQueryParams rtnQueryParams = new RtnQueryParams();
 //		查詢條件 Filtering		
 		rtnQueryParams.setRtnCateGory(rtnCateGory);
@@ -56,12 +56,12 @@ public class ThymeleafController {
 //		分頁Pagination
 		rtnQueryParams.setLimit(limit);
 		rtnQueryParams.setOffset(offset);
-		
+
 		List<Rtn> RtnList = rtnService.getAllRtns(rtnQueryParams);
 
 		return ResponseEntity.status(HttpStatus.OK).body(RtnList);
 	}
-	
+
 	@GetMapping("/")
 	public String index(Model model) {
 		return "index";
@@ -74,9 +74,9 @@ public class ThymeleafController {
 		Integer rtnCount = rtnService.getAllRtnIdCount();
 		List<Rtn> rtn = rtnService.getAllRtnData();
 //		注入QueryButtonEven資料
-		
-		List<String>QueryButtonValue = rtnService.getAllKeepRtnWhy();
-		
+
+		List<String> QueryButtonValue = rtnService.getAllKeepRtnWhy();
+
 		model.addAttribute("rtnCount", rtnCount);
 		model.addAttribute("rtn1", rtn);
 		model.addAttribute("QueryButtonValue", QueryButtonValue);
@@ -91,26 +91,39 @@ public class ThymeleafController {
 		}
 		return "Rtnmodify";
 	}
-	
+
 	@PutMapping("/Rtnmodify/{RtnNoId}")
-    public ResponseEntity<Rtn> updateProduct(@PathVariable Integer RtnNoId,
-    										 @RequestBody @Valid RtnRequest rtnRequeset){
+	public ResponseEntity<Rtn> updateProduct(@PathVariable Integer RtnNoId,
+			@RequestBody @Valid RtnRequest rtnRequeset) {
 //    	判斷數據是否存在
-    	Rtn rtn = rtnService.getProductById(RtnNoId);
-    	System.out.println(rtn == null);
-    	if(rtn == null) {
-    		return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-    	}else {
+		Rtn rtn = rtnService.getProductById(RtnNoId);
+		System.out.println(rtn == null);
+		if (rtn == null) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+		} else {
 //    		修改數據
-    		rtnService.updateRtn(RtnNoId, rtnRequeset);
-    		Rtn updatedRtn = rtnService.getProductById(RtnNoId);
-    		System.out.println(RtnNoId);
-    		return ResponseEntity.status(HttpStatus.OK).body(updatedRtn);
-    	}
-    }
+			rtnService.updateRtn(RtnNoId, rtnRequeset);
+			Rtn updatedRtn = rtnService.getProductById(RtnNoId);
+			System.out.println(RtnNoId);
+			return ResponseEntity.status(HttpStatus.OK).body(updatedRtn);
+		}
+	}
+
+	@Autowired
+	private EmpService empService;
+
+	@PostMapping("Emp/register")
+//	public ResponseEntity<Emp> register(
+	public String register(
 	
-	
-	
+			@RequestBody @Valid EmpRegisterRequest empRegisterRequest) {
+
+		Emp empName = empService.getUserById(empRegisterRequest);
+		System.out.println("登入成功");
+		return "loginS";
+//		return ResponseEntity.status(HttpStatus.CREATED).body(empName);
+	}
+
 //    @PutMapping("/Rtnmodify/{RtnNoId}")
 //    public ResponseEntity<Rtn> updateProduct(@PathVariable Integer RtnNoId,
 //    										 @RequestBody @Valid RtnRequest rtnRequeset){

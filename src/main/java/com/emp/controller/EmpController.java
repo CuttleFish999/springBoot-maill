@@ -13,7 +13,7 @@ import com.emp.dto.EmpRegisterRequest;
 import com.emp.model.Emp;
 import com.emp.service.EmpService;
 
-@RestController
+//@RestController
 public class EmpController {
 	
 	@Autowired

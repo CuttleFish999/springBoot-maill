@@ -89,7 +89,7 @@ section#callUs div#callUs-div {
   color: greenyellow !important;
   font: weight 900px;
   transition: 0.3s;
-  transform: scale(1.1);
+/*   transform: scale(1.1); */
 }
 
 .navbar-nav .show > .nav-link, .navbar-nav .nav-link.active {

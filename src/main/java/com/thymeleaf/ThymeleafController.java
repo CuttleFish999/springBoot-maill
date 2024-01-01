@@ -15,10 +15,14 @@ import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.emp.dto.EmpRegisterRequest;
+import com.emp.model.Emp;
+import com.emp.service.EmpService;
 import com.rtn.contant.RtnCateGory;
 import com.rtn.dto.RtnQueryParams;
 import com.rtn.dto.RtnRequest;
@@ -32,6 +36,8 @@ import com.rtn.service.RtnService;
 public class ThymeleafController {
 	@Autowired
 	public RtnService rtnService;
+	@Autowired
+	public EmpService empService;
 	
 //	條件查詢:根據原因查詢
 	@GetMapping("/Rtns")
@@ -109,6 +115,14 @@ public class ThymeleafController {
     	}
     }
 	
+//	登入判斷
+	@PostMapping("/Emp/register")
+	public ResponseEntity<Emp> register(@RequestBody @Valid EmpRegisterRequest empRegisterRequest){
+		
+		Emp empName = empService.getUserById(empRegisterRequest);
+
+		return ResponseEntity.status(HttpStatus.CREATED).body(empName);
+	}
 	
 	
 //    @PutMapping("/Rtnmodify/{RtnNoId}")

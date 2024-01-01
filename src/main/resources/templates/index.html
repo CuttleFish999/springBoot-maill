@@ -67,15 +67,16 @@
 				<img src="/icon/x.png" id="close-login-div" alt="">
 				<div class="login">
 					<h3>登入會員 Login</h3>
-					<form action="用戶管理">
-						<input type="text" id="username" name="username" placeholder="帳號"
-							required>
-						<div class="tab"></div>
-						<input type="text" id="password" name="password" placeholder="密碼"
-							required>
-						<div class="tab"></div>
-						<input type="submit" value="登入" class="submit" onclick="">
-					</form>
+					<!-- 					<form action="用戶管理"> -->
+					<input type="text" id="username" name="username" placeholder="帳號"
+						required>
+					<div class="tab"></div>
+					<input type="text" id="password" name="password" placeholder="密碼"
+						required>
+					<div class="tab"></div>
+					<input type="submit" value="登入" class="submit" id="loginBtn">
+
+					<!-- 					</form> -->
 					<h5 onclick="show_hide()">註冊帳號</h5>
 				</div>
 			</div>
@@ -89,14 +90,14 @@
 				<div class="signup">
 					<h3>註冊 Sign Up</h3>
 					<img src="/icon/x.png" id="close-login-div2" alt="">
-					<form id="loginForm" action="用戶管理" method="post">
+					<form id="" action="用戶管理" method="post">
 						<input type="text" id="username" name="username" placeholder="帳號"
 							required>
 						<div class="tab"></div>
 						<input type="text" id="password" name="password" placeholder="密碼"
 							required>
 						<div class="tab"></div>
-						<input type="submit" value="登入" class="submit">
+						<input type="button" value="登入" class="submit">
 					</form>
 
 
@@ -166,24 +167,26 @@
 
 	<script>
 		$(document).ready(function() {
-			$("#loginForm").submit(function(e) {
-				e.preventDefault(); // 防止默認提交行為
-
-				var formData = $(this).serialize(); // 獲取表單數據
+			$("#loginBtn").click(function(e) {
+				e.preventDefault();
+				console.log("123");
+				var formData = $("#loginForm").serialize();
 
 				$.ajax({
 					type : "POST",
-					url : "/Emp/register", // 修改為您的控制器端點
+					url : "/Emp/register",
 					data : formData,
 					success : function(response) {
-						// 處理成功的響應
 						console.log(response);
+						// 在這裡處理成功的回應
 					},
 					error : function(error) {
-						// 處理錯誤
 						console.error(error);
+						// 在這裡處理錯誤的回應
 					}
 				});
+
+				return false; // 阻止表單的默認提交行為
 			});
 		});
 	</script>

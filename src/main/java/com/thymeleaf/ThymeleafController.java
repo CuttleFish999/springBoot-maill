@@ -112,13 +112,11 @@ public class ThymeleafController {
 	@Autowired
 	private EmpService empService;
 
-	@PostMapping("Emp/register")
-//	public ResponseEntity<Emp> register(
-	public String register(
-	
-			@RequestBody @Valid EmpRegisterRequest empRegisterRequest) {
+	@PostMapping("/Emp/register")
+//	public ResponseEntity<Emp> register(@RequestBody @Valid EmpRegisterRequest empRegisterRequest)
+	public String register() {
 
-		Emp empName = empService.getUserById(empRegisterRequest);
+//		Emp empName = empService.getUserById(empRegisterRequest);
 		System.out.println("登入成功");
 		return "loginS";
 //		return ResponseEntity.status(HttpStatus.CREATED).body(empName);

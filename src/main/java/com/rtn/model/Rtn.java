@@ -1,6 +1,5 @@
 package com.rtn.model;
 
-import java.sql.Timestamp;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -12,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 import org.hibernate.criterion.Order;
 
@@ -33,7 +34,7 @@ public class Rtn {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "orderNo", referencedColumnName = "ordNo")
 	private Order orderNo;
-
+	
 	@Column(name = "rtnDate")
 	private Date rtnDate;
 
@@ -42,7 +43,9 @@ public class Rtn {
 
 	@Column(name = "refundAmount")
 	private int refundAmount;
-
+	
+	@Max(3)
+	@Min(0)
 	@Column(name = "rtnStatus")
 	private int rtnStatus;
 

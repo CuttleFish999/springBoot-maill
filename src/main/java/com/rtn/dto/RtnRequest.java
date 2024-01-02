@@ -3,14 +3,9 @@ package com.rtn.dto;
 import java.util.Date;
 
 import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-
-import org.hibernate.criterion.Order;
-
-import com.emp.model.Emp;
 
 public class RtnRequest {
 
@@ -23,7 +18,9 @@ public class RtnRequest {
 	@NotNull
 	@Column(name = "refundAmount")
 	private int refundAmount;
-
+	
+	@Max(3)
+	@Min(0)
 	@Column(name = "rtnStatus")
 	private int rtnStatus;
 //	// FK員工

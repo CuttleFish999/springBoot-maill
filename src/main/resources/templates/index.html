@@ -67,20 +67,21 @@
 				<img src="/icon/x.png" id="close-login-div" alt="">
 				<div class="login">
 					<h3>登入會員 Login</h3>
-					<!-- 					<form action="用戶管理"> -->
-					<input type="text" id="username" name="username" placeholder="帳號"
-						required>
-					<div class="tab"></div>
-					<input type="text" id="password" name="password" placeholder="密碼"
-						required>
-					<div class="tab"></div>
-					<input type="submit" value="登入" class="submit" id="loginBtn">
-
-					<!-- 					</form> -->
+					<form th:action="@{/Emp/register}" method="post"
+						th:object="${empRegisterRequest}">
+						<input type="text" id="username" name="username" placeholder="帳號">
+<!-- 							required th:field="*{username}"> -->
+						<div class="tab"></div>
+						<input type="password" id="password" name="password">
+<!-- 							placeholder="密碼" required th:field="*{password}"> -->
+						<div class="tab"></div>
+						<input type="submit" value="登入" class="submit">
+					</form>
 					<h5 onclick="show_hide()">註冊帳號</h5>
 				</div>
 			</div>
 		</div>
+
 
 
 		<!------------------------------------------------------------------------------------>
@@ -173,19 +174,17 @@
 				var formData = $("#loginForm").serialize();
 
 				$.ajax({
-// 					type : "POST",
-					type : "GET",
-// 					url : "/Emp/register",
-					url : "loginS",
-
+					type : "POST",
+					url : "/Emp/register",
 					data : formData,
 					success : function(response) {
 						console.log(response);
+						// 在這裡，確保後端返回的數據或狀態碼表示成功，然後再進行重定向
 						window.location.href = "loginS";
 					},
 					error : function(error) {
 						console.log(error);
-
+						// 在這裡處理錯誤情況
 					}
 				});
 

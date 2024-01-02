@@ -19,9 +19,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.emp.dto.EmpRegisterRequest;
-import com.emp.model.Emp;
 import com.emp.service.EmpService;
 import com.rtn.contant.RtnCateGory;
 import com.rtn.dto.RtnQueryParams;
@@ -112,16 +112,23 @@ public class ThymeleafController {
 	@Autowired
 	private EmpService empService;
 
-//	@PostMapping("/Emp/register")
-	@GetMapping("/loginS")
-//	public ResponseEntity<Emp> register(@RequestBody @Valid EmpRegisterRequest empRegisterRequest)
+	@PostMapping("/Emp/register")
+//	public String register(@RequestBody @Validated EmpRegisterRequest empRegisterRequest) {
 	public String register() {
+		
+
+		System.out.println("ok");
+		
+//		return "redirect:/loginS";
+		return "loginS";
+	}
+}
+//	public ModelAndView register() {
 
 //		Emp empName = empService.getUserById(empRegisterRequest);
-		System.out.println("登入成功");
-		return "loginS";
-//		return ResponseEntity.status(HttpStatus.CREATED).body(empName);
-	}
+
+//		return new ModelAndView(redirectView);
+//	}
 
 //    @PutMapping("/Rtnmodify/{RtnNoId}")
 //    public ResponseEntity<Rtn> updateProduct(@PathVariable Integer RtnNoId,
@@ -156,4 +163,4 @@ public class ThymeleafController {
 //
 //        return "login";
 //    }
-}
+//}

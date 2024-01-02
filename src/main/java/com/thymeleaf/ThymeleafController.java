@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.emp.dto.EmpRegisterRequest;
+import com.emp.model.Emp;
 import com.emp.service.EmpService;
 import com.rtn.contant.RtnCateGory;
 import com.rtn.dto.RtnQueryParams;
@@ -114,11 +115,25 @@ public class ThymeleafController {
 
 	@PostMapping("/Emp/register")
 	public String register(@ModelAttribute @Valid EmpRegisterRequest empRegisterRequest) {
-	    // 使用 empRegisterRequest 進行註冊邏輯...
+		// 使用 empRegisterRequest 進行註冊邏輯...
 
-	    System.out.println("ok");
-
-	    return "loginS";
+		Emp emp = empService.getUserById(empRegisterRequest);
+		if (emp == null) {
+			System.out.println("no");
+			return "loginF";
+		}
+		System.out.println(emp.getEmpName());
+		System.out.println(emp.getEmpPsw());
+		System.out.println(empRegisterRequest.getEmpName());
+		System.out.println(empRegisterRequest.getEmpPsw());
+		
+		System.out.println(empRegisterRequest.getEmpName() == emp.getEmpName() && empRegisterRequest.getEmpPsw() == emp.getEmpPsw());
+		
+		if (empRegisterRequest.getEmpName().equals(emp.getEmpName()) && empRegisterRequest.getEmpPsw().equals(emp.getEmpPsw())) {
+			System.out.println("ok");
+			return "loginS";
+		}
+		return "loginF";
 	}
 }
 

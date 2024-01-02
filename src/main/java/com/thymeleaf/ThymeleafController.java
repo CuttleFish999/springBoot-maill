@@ -14,12 +14,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.emp.dto.EmpRegisterRequest;
 import com.emp.service.EmpService;
@@ -113,16 +113,15 @@ public class ThymeleafController {
 	private EmpService empService;
 
 	@PostMapping("/Emp/register")
-//	public String register(@RequestBody @Validated EmpRegisterRequest empRegisterRequest) {
-	public String register() {
-		
+	public String register(@ModelAttribute @Valid EmpRegisterRequest empRegisterRequest) {
+	    // 使用 empRegisterRequest 進行註冊邏輯...
 
-		System.out.println("ok");
-		
-//		return "redirect:/loginS";
-		return "loginS";
+	    System.out.println("ok");
+
+	    return "loginS";
 	}
 }
+
 //	public ModelAndView register() {
 
 //		Emp empName = empService.getUserById(empRegisterRequest);

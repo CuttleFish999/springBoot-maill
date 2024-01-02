@@ -67,16 +67,17 @@
 				<img src="/icon/x.png" id="close-login-div" alt="">
 				<div class="login">
 					<h3>登入會員 Login</h3>
-					<form th:action="@{/Emp/register}" method="post"
-						th:object="${empRegisterRequest}">
-						<input type="text" id="username" name="username" placeholder="帳號">
-<!-- 							required th:field="*{username}"> -->
+					<form th:action="@{/Emp/register}" method="post">
+<!-- 						th:object="${empRegisterRequest}"> -->
+						<input type="text" id="username" name="empName" placeholder="帳號">
+<!-- 							required th:field="*{empName}"> -->
 						<div class="tab"></div>
-						<input type="password" id="password" name="password">
-<!-- 							placeholder="密碼" required th:field="*{password}"> -->
+						<input type="password" id="password" name="empPsw">
+<!-- 							placeholder="密碼" required th:field="*{empPsw}"> -->
 						<div class="tab"></div>
 						<input type="submit" value="登入" class="submit">
 					</form>
+
 					<h5 onclick="show_hide()">註冊帳號</h5>
 				</div>
 			</div>

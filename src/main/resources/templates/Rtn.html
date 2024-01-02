@@ -227,16 +227,17 @@ main {
 						cell.innerText = keyValue;
 						break;
 					case "empNo":
+						cell.innerText = keyValue.empNo;
+						break;
 					case "ordNo":
 					case null:
-						cell.innerText = "沒有資料";
+						cell.innerText = keyValue.ordNo;
 						break;
 					default:
 						cell.innerText = "沒有資料";
 						break;
 					}
 				}
-
 				// 在最後一列加入修改按鈕
 				let modifyCell = newRow.insertCell();
 				modifyCell.innerHTML = '<button onclick="redirectToModifyPage('

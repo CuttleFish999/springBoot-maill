@@ -173,16 +173,19 @@
 				var formData = $("#loginForm").serialize();
 
 				$.ajax({
-					type : "POST",
-					url : "/Emp/register",
+// 					type : "POST",
+					type : "GET",
+// 					url : "/Emp/register",
+					url : "loginS",
+
 					data : formData,
 					success : function(response) {
 						console.log(response);
-						// 在這裡處理成功的回應
+						window.location.href = "loginS";
 					},
 					error : function(error) {
-						console.error(error);
-						// 在這裡處理錯誤的回應
+						console.log(error);
+
 					}
 				});
 

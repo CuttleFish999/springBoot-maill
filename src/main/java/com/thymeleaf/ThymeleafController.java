@@ -112,7 +112,8 @@ public class ThymeleafController {
 	@Autowired
 	private EmpService empService;
 
-	@PostMapping("/Emp/register")
+//	@PostMapping("/Emp/register")
+	@GetMapping("/loginS")
 //	public ResponseEntity<Emp> register(@RequestBody @Valid EmpRegisterRequest empRegisterRequest)
 	public String register() {
 

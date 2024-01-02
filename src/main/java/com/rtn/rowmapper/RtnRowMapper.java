@@ -24,6 +24,12 @@ public class RtnRowMapper implements RowMapper<Rtn> {
         emp.setEmpNo(resultSet.getInt("empNo"));
         rtn.setEmpNo(emp);
         
+//        Ord ord = new Ord();
+//        emp.setEmpNo(resultSet.getInt("empNo"));
+//        rtn.setEmpNo(emp);
+        
+
+        
         return rtn;
     }
 }

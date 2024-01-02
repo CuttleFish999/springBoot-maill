@@ -28,9 +28,8 @@ public class RtnDaoImpl implements RtnDao {
 	public List<Rtn> getAllRtns(RtnQueryParams rtnQueryParams) {
 		String sql = "SELECT rtnNo, empNo, ordNo, rtnDate, rtnWhy, refundAmount, rtnStatus " + "FROM rtn WHERE 1=1";
 		Map<String, Object> map = new HashMap<>();
-
-		sql = addFilteringSQL(sql, map, rtnQueryParams);
 		
+		sql = addFilteringSQL(sql, map, rtnQueryParams);
 		
 		System.out.println("addFilteringSQL: " + (sql));
 		

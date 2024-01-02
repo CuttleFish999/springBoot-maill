@@ -220,13 +220,14 @@ main {
 
 					switch (key) {
 					case "rtnNo":
-					case "empNo":
-					case "ordNo":
 					case "rtnDate":
 					case "rtnWhy":
 					case "refundAmount":
+					case "rtnStatus":
 						cell.innerText = keyValue;
 						break;
+					case "empNo":
+					case "ordNo":
 					case null:
 						cell.innerText = "沒有資料";
 						break;

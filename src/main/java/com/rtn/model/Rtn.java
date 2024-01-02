@@ -25,6 +25,15 @@ public class Rtn {
 	@Column(name = "rtnNo", updatable = false)
 	private Integer rtnNo;
 
+	// FK員工
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "empNo", referencedColumnName = "empNo")
+	private Emp empNo;
+	// FK訂單
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "orderNo", referencedColumnName = "ordNo")
+	private Order orderNo;
+
 	@Column(name = "rtnDate")
 	private Date rtnDate;
 
@@ -36,14 +45,6 @@ public class Rtn {
 
 	@Column(name = "rtnStatus")
 	private int rtnStatus;
-	// FK員工
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "empNo", referencedColumnName = "empNo")
-	private Emp empNo;
-	// FK訂單
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "orderNo", referencedColumnName = "ordNo")
-	private Order orderNo;
 
 	public Integer getRtnNo() {
 		return rtnNo;

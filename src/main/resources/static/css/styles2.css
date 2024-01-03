@@ -145,4 +145,33 @@ section#callUs div#callUs-div {
   text-align: center;
 }/*# sourceMappingURL=styles2.css.map */
 
+#Rtntitle{
+    display: flex;
+    margin-top: 10px;
+    font-size: 2em;
+    justify-content: center;
+}
 
+#Rtntitle p{
+  font-size: .7em;
+}
+
+#Rtntitle-ctrl{
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  margin: 10px 0;
+}
+
+#Rtntitle-ctrl input,
+#Rtntitle-ctrl button{
+  /* font-size: 2em; */
+}
+
+#Rtntitle-ctrl input{
+  width: 200px;
+}
+#Rtntitle-ctrl button{
+  width: 50px;
+  margin-left: 5px;
+}

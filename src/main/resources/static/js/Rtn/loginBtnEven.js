@@ -20,5 +20,4 @@ function loginBtnEven() {
 			return false; // 阻止表單的默認提交行為
 		});
 	});
-
 }

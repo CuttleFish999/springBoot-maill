@@ -36,7 +36,16 @@ import com.rtn.service.RtnService;
 public class ThymeleafController {
 	@Autowired
 	public RtnService rtnService;
-
+	
+//	後端首頁
+	@GetMapping("/BackStage")
+	public String index(Model model) {
+		return "BackStage/index";
+	}
+	
+	
+	
+	
 //	條件查詢:根據原因查詢
 	@GetMapping("/Rtns")
 	public ResponseEntity<List<Rtn>> getAllRtns(
@@ -63,10 +72,7 @@ public class ThymeleafController {
 		return ResponseEntity.status(HttpStatus.OK).body(RtnList);
 	}
 
-	@GetMapping("/")
-	public String index(Model model) {
-		return "Front/index";
-	}
+
 
 	@GetMapping("/Rtn")
 	public String Rtn(Model model) {

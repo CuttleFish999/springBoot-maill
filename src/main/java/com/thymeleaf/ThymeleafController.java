@@ -65,7 +65,7 @@ public class ThymeleafController {
 
 	@GetMapping("/")
 	public String index(Model model) {
-		return "index";
+		return "Front/index";
 	}
 
 	@GetMapping("/Rtn")

@@ -68,12 +68,12 @@
 				<div class="login">
 					<h3>登入會員 Login</h3>
 					<form th:action="@{/Emp/register}" method="post">
-<!-- 						th:object="${empRegisterRequest}"> -->
+						<!-- 						th:object="${empRegisterRequest}"> -->
 						<input type="text" id="username" name="empName" placeholder="帳號">
-<!-- 							required th:field="*{empName}"> -->
+						<!-- 							required th:field="*{empName}"> -->
 						<div class="tab"></div>
 						<input type="password" id="password" name="empPsw">
-<!-- 							placeholder="密碼" required th:field="*{empPsw}"> -->
+						<!-- 							placeholder="密碼" required th:field="*{empPsw}"> -->
 						<div class="tab"></div>
 						<input type="submit" value="登入" class="submit">
 					</form>
@@ -152,7 +152,6 @@
             <p class="lead footer-lead">031234567</p>
             <p class="lead footer-lead">Email : </p>
             <p class="lead footer-lead">tibame@gmail.com</p> -->
-
 		</div>
 		<p class="m-0 text-center text-white">Copyright &copy; 第二組 2023</p>
 	</footer>
@@ -163,40 +162,10 @@
 
 	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-
 	<script th:src="@{/js/indexJS/empDivEven.js}"></script>
 
+	<script th:src="@{/js/indexJS/loginBtnEven.js}"></script>
 
-	<script>
-		$(document).ready(function() {
-			$("#loginBtn").click(function(e) {
-				e.preventDefault();
-				console.log("123");
-				var formData = $("#loginForm").serialize();
-
-				$.ajax({
-					type : "POST",
-					url : "/Emp/register",
-					data : formData,
-					success : function(response) {
-						console.log(response);
-						// 在這裡，確保後端返回的數據或狀態碼表示成功，然後再進行重定向
-						window.location.href = "loginS";
-					},
-					error : function(error) {
-						console.log(error);
-						// 在這裡處理錯誤情況
-					}
-				});
-
-				return false; // 阻止表單的默認提交行為
-			});
-		});
-		
-	
-		
-	</script>
-	
 	<!-- <script src="/js/scripts.js"></script> -->
 	<!-- <script src="/js/login.js"></script> -->
 

@@ -43,9 +43,6 @@ public class ThymeleafController {
 		return "BackStage/index";
 	}
 	
-	
-	
-	
 //	條件查詢:根據原因查詢
 	@GetMapping("/Rtns")
 	public ResponseEntity<List<Rtn>> getAllRtns(
@@ -73,7 +70,6 @@ public class ThymeleafController {
 	}
 
 
-
 	@GetMapping("/Rtn")
 	public String Rtn(Model model) {
 
@@ -87,7 +83,7 @@ public class ThymeleafController {
 		model.addAttribute("rtnCount", rtnCount);
 		model.addAttribute("rtn1", rtn);
 		model.addAttribute("QueryButtonValue", QueryButtonValue);
-		return "Rtn";
+		return "/BackStage/Rtn";
 	}
 
 	@GetMapping("/Rtnmodify")

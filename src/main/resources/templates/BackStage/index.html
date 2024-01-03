@@ -1,5 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -9,39 +10,58 @@
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet"
+        type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link th:href="@{/css/BackStage/indexCSS/styles.css}" rel="stylesheet" />
+    <link href="../../static/css/BackStage/indexCSS/styles.css" rel="stylesheet" />
 </head>
 
 
-	
+
 <!--     <link href="css/styles.css" rel="stylesheet" /> -->
-	
-    <style>
-        h1,
-        h2,
-        h3,
-        h4 {
-            font-size: 3em !important;
-        }
 
-        .mb-0 {
-            font-size: 4em;
-            text-align: center;
-        }
+<style>
+    h1,
+    h2,
+    h3,
+    h4 {
+        font-size: 4.5em !important;
+    }
 
-        .subManage {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+    a {
+        font-size: 2em !important;
+    }
 
-        .subManage a {
-            text-decoration: none;
-        }
-    </style>
+    .mb-0 {
+        font-size: 6em;
+        text-align: center;
+    }
+
+    .subManage {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .subManage a {
+        text-decoration: none;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus {
+        color: yellow !important;
+    }
+
+    .nav-link.active {
+        color: yellow !important;
+    }
+    
+    #nav-img{
+    	width:100px;
+    }
+</style>
 
 
 </head>
@@ -50,21 +70,24 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
         <a class="navbar-brand js-scroll-trigger" href="#page-top">
-            <span class="d-block d-lg-none">Clarence Taylor</span>
-            <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2"
-                    src="assets/img/profile.jpg" alt="..." /></span>
+            <span class="d-block d-lg-none"></span>
+			<span class="d-none d-lg-block">
+			    <img id="nav-img" class="img-fluid img-profile rounded-circle mx-auto mb-2"
+			         th:src="@{/icon/BackStage/indexJS/person-harassing-solid.svg}" alt="個人頭像" />
+			</span>
+
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
             aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span
                 class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#MemManage">會員管理</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#RentAppManage">物件管理</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#ShopManage">購物管理</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#NoticeManage">公告管理</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#ComplaintManage">投訴管理</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#BackstageManagement">後台管理</a></li>
+                <li id="li_1" class="nav-item"><a class="nav-link js-scroll-trigger nav-li" href="#MemManage">會員管理</a></li>
+                <li id="li_2" class="nav-item"><a class="nav-link js-scroll-trigger nav-li" href="#RentAppManage">物件管理</a></li>
+                <li id="li_3" class="nav-item"><a class="nav-link js-scroll-trigger nav-li" href="#ShopManage">購物管理</a></li>
+                <li id="li_4" class="nav-item"><a class="nav-link js-scroll-trigger nav-li" href="#NoticeManage">公告管理</a></li>
+                <li id="li_5" class="nav-item"><a class="nav-link js-scroll-trigger nav-li" href="#ComplaintManage">投訴管理</a></li>
+                <li id="li_6" class="nav-item"><a class="nav-link js-scroll-trigger nav-li" href="#BackstageManagement">後台管理</a></li>
             </ul>
         </div>
     </nav>
@@ -136,7 +159,7 @@
                 <div class="subheading mb-5 subManage">
                     <a href="#">商品管理</a>
                     <a href="#">訂單管理</a>
-                    <a href="#">退貨審核</a>
+                    <a href="/Rtn">退貨審核</a>
                 </div>
 
                 <p class="lead mb-5"></p>
@@ -231,10 +254,17 @@
         </section>
         <hr class="m-0" />
     </div>
+
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
     <script src="@{/js/BackStage/indexJS/scripts.js}"></script>
+
+    <script src="@{/js/BackStage/indexJS/indexActiveColor.js}"></script>
+
+<!--     <script src="@{/js/BackStage/indexJS/Rtns_Ajax.js}"></script> -->
+
+
 </body>
 
 </html>

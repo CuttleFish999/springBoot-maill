@@ -3,7 +3,7 @@ package com.product.dto;
 import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
-public class CreateOderRequest {
+public class CreateOrderRequest {
 
     @NotEmpty
     private List<BuyItem> buyItemList;

@@ -1,8 +1,8 @@
 package com.product.service;
 
-import com.product.dto.CreateOderRequest;
+import com.product.dto.CreateOrderRequest;
 
 public interface OrderService {
 
-    Integer createOrder(Integer userId , CreateOderRequest createOderRequest);
+    Integer createOrder(Integer userId , CreateOrderRequest createOderRequest);
 }

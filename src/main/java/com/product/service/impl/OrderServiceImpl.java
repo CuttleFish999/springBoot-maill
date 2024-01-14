@@ -3,7 +3,7 @@ package com.product.service.impl;
 import com.product.dao.OrderDao;
 import com.product.dao.ProductDao;
 import com.product.dto.BuyItem;
-import com.product.dto.CreateOderRequest;
+import com.product.dto.CreateOrderRequest;
 import com.product.model.OrderItem;
 import com.product.model.Product;
 import com.product.service.OrderService;
@@ -28,7 +28,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Transactional
     @Override
-    public Integer createOrder(Integer userId, CreateOderRequest createOderRequest) {
+    public Integer createOrder(Integer userId, CreateOrderRequest createOderRequest) {
 
         int totalAmount = 0;
 

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>購物車</title>
+</head>
+<body>
+
+    <h2>創建訂單</h2>
+    <div>
+        <label for="productId">產品 ID：</label>
+        <input type="number" id="productId" name="productId" min="1">
+    </div>
+    <div>
+        <label for="quantity">數量：</label>
+        <input type="number" id="quantity" name="quantity" min="1">
+    </div>
+    <button onclick="submitOrder()">提交訂單</button>
+
+    <script>
+        function submitOrder() {
+
+            var productId = document.getElementById('productId').value;
+            var quantity = document.getElementById('quantity').value;
+
+
+            var orderData = {
+                buyItemList: [
+                    {
+                        productId: parseInt(productId, 10),
+                        quantity: parseInt(quantity, 10)
+                    }
+
+                ]
+            };
+
+            // 使用 Fetch API 發送請求
+            fetch('http://localhost:8080/users/6/orders', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(orderData) 
+            })
+            .then(response => {
+                if (!response.ok) {
+
+                    return response.text().then(text => { throw new Error(text) });
+                }
+                return response.json(); 
+            })
+            .then(data => {
+                console.log('Success:', data);
+                alert('訂單創建成功, 訂單 ID: ' + data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('訂單創建失敗');
+            });
+        }
+    </script>
+
+</body>
+</html>

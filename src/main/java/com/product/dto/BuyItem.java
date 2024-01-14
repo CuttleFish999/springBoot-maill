@@ -4,9 +4,9 @@ import javax.validation.constraints.NotNull;
 
 public class BuyItem {
 
-    @NotNull
+//    @NotNull
     private Integer productId;
-    @NotNull
+//    @NotNull
     private Integer quantity;
 
     public Integer getProductId() {
